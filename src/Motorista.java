@@ -16,6 +16,7 @@ public class Motorista
     private GregorianCalendar data_nascimento;
     private int[] grau = new int[100];    //grau de cumprimento de horário estabelecido com o cliente, dado por um factor entre 0 e 100
     private double kms;
+    private int estado;
     
     /**
      * Construtor vazio, ou seja, inicializa um Motorista a nulo.
@@ -28,6 +29,7 @@ public class Motorista
         this.data_nascimento = new GregorianCalendar();
         this.grau = null;
         this.kms = 0;
+        this.estado = 0;
     }
     
     /**
