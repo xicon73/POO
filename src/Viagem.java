@@ -50,11 +50,11 @@ public class Viagem {
     /* Getters and setters methods */
 
     public GregorianCalendar getData() {
-        return data;
+        return (GregorianCalendar)data.clone();
     }
 
     public void setData(Date data) {
-        this.data = data;
+        this.data = (GregorianCalendar)data.clone();
     }
 
     public Cliente getCliente() {
@@ -134,5 +134,4 @@ public class Viagem {
                 ", distancia=" + distancia +
                 '}';
     }
-}
 }
