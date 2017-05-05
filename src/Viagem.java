@@ -26,17 +26,13 @@ public class Viagem {
         this.data_nascimento = date;
         this.cliente=client.clone();
         this.viatura=car.clone();
-        this.origem=origin;
-        this.destino=destiny;
+        this.origem=origin.clone();
+        this.destino=destiny.clone();
         this.distancia=distance;
         this.preco=price;
     }
 
-    /**
-     * Construtor de cópia, ou seja, copia os dados de um Cliente já existente.
-     * @param c O Cliente que vamos copiar.
-     */
-    public Viagem(Cliente v){
+    public Viagem(Viagem v){
         this.data=v.getData();
         this.cliente=v.getCliente();
         this.viatura=v.getViatura();
@@ -103,35 +99,5 @@ public class Viagem {
 
     public void setPreco(Float preco){
       this.preco = preco;
-    }
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-
-        Viagem viagem = (Viagem) object;
-
-        if (data != null ? !data.equals(viagem.data) : viagem.data != null) return false;
-        if (cliente != null ? !cliente.equals(viagem.cliente) : viagem.cliente != null) return false;
-        if (viatura != null ? !viatura.equals(viagem.viatura) : viagem.viatura != null) return false;
-        if (origem != null ? !origem.equals(viagem.origem) : viagem.origem != null) return false;
-        if (destino != null ? !destino.equals(viagem.destino) : viagem.destino != null) return false;
-        if (distancia != null ? !distancia.equals(viagem.distancia) : viagem.distancia != null) return false;
-
-        return true;
-    }
-
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Viagem{" +
-                "data=" + data +
-                ", cliente=" + cliente +
-                ", viatura=" + viatura +
-                ", origem=" + origem +
-                ", destino=" + destino +
-                ", distancia=" + distancia +
-                '}';
     }
 }
