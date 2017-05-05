@@ -1,17 +1,55 @@
-import Java.Util.*
+import java.util.*;
+import java.io.*;
+import static java.lang.System.out;
 
 public class Viagem {
 
-    private Date data;
-    private Cliente cliente;
+    private GregorianCalendar data;
+    public Cliente cliente;
     private Viatura viatura;
     private Ponto origem;
     private Ponto destino;
     private Float distancia;
+    private Float preco;
+
+    public Viagem(){
+        this.data = new GregorianCalendar();
+        this.cliente = "";
+        this.viatura = "";
+        this.origem = "";
+        this.destino = "";
+        this.distancia = "";
+        this.preco = "";
+    }
+
+    public Viagem(GregorianCalendar date, Cliente client, Viatura car, Ponto origin, Ponto destiny, Float distance, Float price){
+        this.data_nascimento = date;
+        this.cliente=client.clone();
+        this.viatura=car.clone();
+        this.origem=origin;
+        this.destino=destiny;
+        this.distancia=distance;
+        this.preco=price;
+    }
+
+    /**
+     * Construtor de cópia, ou seja, copia os dados de um Cliente já existente.
+     * @param c O Cliente que vamos copiar.
+     */
+    public Viagem(Cliente v){
+        this.data=v.getData();
+        this.cliente=v.getCliente();
+        this.viatura=v.getViatura();
+        this.origem=v.getOrigem();
+        this.destino=v.getDestino();
+        this.distancia=v.getDistancia();
+        this.preco=v.getPreco();
+    }
+
 
     /* Getters and setters methods */
 
-    public Date getData() {
+    public GregorianCalendar getData() {
         return data;
     }
 
@@ -59,13 +97,12 @@ public class Viagem {
         this.distancia = distancia;
     }
 
-    public Viagem(Date data, Cliente cliente, Viatura viatura, Ponto origem, Ponto destino, Float distancia) {
-        this.data = data;
-        this.cliente = cliente;
-        this.viatura = viatura;
-        this.origem = origem;
-        this.destino = destino;
-        this.distancia = distancia;
+    public Float getPreco() {
+      return preco;
+    }
+
+    public void setPreco(Float preco){
+      this.preco = preco;
     }
 
     public boolean equals(Object object) {
@@ -85,16 +122,6 @@ public class Viagem {
         return true;
     }
 
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + (cliente != null ? cliente.hashCode() : 0);
-        result = 31 * result + (viatura != null ? viatura.hashCode() : 0);
-        result = 31 * result + (origem != null ? origem.hashCode() : 0);
-        result = 31 * result + (destino != null ? destino.hashCode() : 0);
-        result = 31 * result + (distancia != null ? distancia.hashCode() : 0);
-        return result;
-    }
 
     @java.lang.Override
     public java.lang.String toString() {
