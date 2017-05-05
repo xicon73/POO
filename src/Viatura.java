@@ -3,32 +3,69 @@ import java.io.*;
 import static java.lang.System.out;
 
 public class Viatura {
+  private int capacidade;
+  private int velocidade;
+  private int preco_base;
   private Coordenadas localizacao;
   private Motorista condutor;
-  private Int kms;
-  private Int qualidade;
+  private int kms;
+  private int qualidade;
 
 
   public Viatura(){
-      this.localizacao = "";
-      this.condutor = "";
+      this.capacidade = 0;
+      this.velocidade = 0;
+      this.preco_base = 0;
+      this.localizacao = new Coordenadas();
+      this.condutor = new Motorista();
       this.kms = 0;
       this.qualidade = 0;
   }
-  public Viatura(Coordenadas localizacao, Motorista condutor, Int kms, Int qualidade){
+  public Viatura(int capacidade, int velocidade, int preco_base, Coordenadas localizacao, Motorista condutor, int kms, int qualidade){
+      this.capacidade = capacidade;
+      this.velocidade = velocidade;
+      this.preco_base = preco_base;
       this.localizacao = localizacao.clone();
       this.condutor = condutor.clone();
-      this.km = km;
+      this.kms = kms;
       this.qualidade = qualidade;
   }
 
   public Viatura(Viatura m){
+      this.capacidade = m.getCapacidade();
+      this.velocidade = m.getVelocidade();
+      this.preco_base = m.getPreco_base();
       this.localizacao = m.getLocalizacao();
       this.condutor = m.getCondutor();
       this.kms = m.getKms();
       this.qualidade = m.getQualidade();
   }
 
+  public int getCapacidade() {
+        return capacidade;
+    }
+
+  public void setCapacidade(int capacidade) {
+      this.capacidade = capacidade;
+    }
+
+  public int getVelocidade() {
+      return velocidade;
+    }
+
+  public void setVelocidade(int velocidade) {
+      this.velocidade = velocidade;
+    }
+
+  public int getPreco_base() {
+      return preco_base;
+    }
+
+  public void setPreco_base(int preco_base) {
+      this.preco_base = preco_base;
+    }
+  
+  
   public Coordenadas getLocalizacao() {
       return localizacao;
   }
@@ -37,11 +74,11 @@ public class Viatura {
       return condutor;
   }
 
-  public Int getKms() {
+  public int getKms() {
       return kms;
   }
 
-  public Int getQualidade() {
+  public int getQualidade() {
       return qualidade;
   }
 
@@ -53,13 +90,13 @@ public class Viatura {
       this.condutor = condutor;
   }
 
-  public void setKms(Int kms) {
+  public void setKms(int kms) {
       this.kms = kms;
   }
 
-  public void setQualdiade(Int qualidade) {
+  public void setQualdiade(int qualidade) {
       this.qualidade = qualidade;
   }
 
-
+  public Viatura clone(){return new Viatura(this);}
 }

@@ -7,23 +7,23 @@ public class Viagem {
     private GregorianCalendar data;
     public Cliente cliente;
     private Viatura viatura;
-    private Ponto origem;
-    private Ponto destino;
-    private Float distancia;
-    private Float preco;
+    private Coordenadas origem;
+    private Coordenadas destino;
+    private float distancia;
+    private float preco;
 
     public Viagem(){
         this.data = new GregorianCalendar();
-        this.cliente = "";
-        this.viatura = "";
-        this.origem = "";
-        this.destino = "";
-        this.distancia = "";
-        this.preco = "";
+        this.cliente = new Cliente();
+        this.viatura = new Viatura();
+        this.origem = new Coordenadas();
+        this.destino = new Coordenadas();
+        this.distancia = 0f;
+        this.preco = 0f;
     }
 
-    public Viagem(GregorianCalendar date, Cliente client, Viatura car, Ponto origin, Ponto destiny, Float distance, Float price){
-        this.data_nascimento = date;
+    public Viagem(GregorianCalendar date, Cliente client, Viatura car, Coordenadas origin, Coordenadas destiny, Float distance, Float price){
+        this.data = new GregorianCalendar();
         this.cliente=client.clone();
         this.viatura=car.clone();
         this.origem=origin.clone();
@@ -69,19 +69,19 @@ public class Viagem {
         this.viatura = viatura;
     }
 
-    public Ponto getOrigem() {
+    public Coordenadas getOrigem() {
         return origem;
     }
 
-    public void setOrigem(Ponto origem) {
+    public void setOrigem(Coordenadas origem) {
         this.origem = origem;
     }
 
-    public Ponto getDestino() {
+    public Coordenadas getDestino() {
         return destino;
     }
 
-    public void setDestino(Ponto destino) {
+    public void setDestino(Coordenadas destino) {
         this.destino = destino;
     }
 

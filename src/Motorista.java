@@ -77,4 +77,6 @@ public class Motorista extends Cliente {
     public void setEstado(int estado) {
       this.estado = estado;
     }
+    
+    public Motorista clone(){return new Motorista(this);}
 }

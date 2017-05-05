@@ -114,4 +114,6 @@ public class Cliente
      * @param d A nova data de nascimento que irá substituir a antiga.
      */
     public void setDate(GregorianCalendar d){this.data_nascimento=(GregorianCalendar)d.clone();}
+    
+    public Cliente clone(){return new Cliente(this);}
 }

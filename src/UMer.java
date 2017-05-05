@@ -8,17 +8,17 @@ public class UMer implements Serializable{
   private Map<String,Viagem> viagens;
 
   public UMer(){
-    this.clientes = new Map<String,Cliente>();
-    this.motoristas = new Map<String,Motorista>();
-    this.viaturas = new Map<String,Viatura>();
-    this.viagens = new Map<String,Viagem>();
+    this.clientes = new HashMap<String,Cliente>();
+    this.motoristas = new HashMap<String,Motorista>();
+    this.viaturas = new HashMap<String,Viatura>();
+    this.viagens = new HashMap<String,Viagem>();
   }
 
   public UMer(Map<String,Cliente> clientes, Map<String,Motorista> motorista, Map<String,Viatura> viaturas, Map<String,Viagem> viagens) {
-    this.clientes = new Map<String,Cliente>();
-    this.motoristas = new Map<String,Motorista>();
-    this.viaturas = new Map<String,Viatura>();
-    this.viagens = new Map<String,Viagem>();
+    this.clientes = new HashMap<String,Cliente>();
+    this.motoristas = new HashMap<String,Motorista>();
+    this.viaturas = new HashMap<String,Viatura>();
+    this.viagens = new HashMap<String,Viagem>();
   }
 
 }
