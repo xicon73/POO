@@ -1,35 +1,24 @@
+import java.util.*;
+import java.io.*;
 
-/**
- * Write a description of class UMer here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class UMer
-{
-    // instance variables - replace the example below with your own
-    private int x;
-    
-    private ArrayList <Object> a;
+public class UMeR implements Serializable{
+  private Map<String,Cliente> clientes;
+  private Map<String,Motorista> motoristas;
+  private Map<String,Viatura> viaturas;
+  private Map<String,Viagem> viagens;
 
-    /**
-     * Constructor for objects of class UMer
-     */
-    public UMer()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+  public UMer(){
+    this.clientes = new Map<String,Cliente>();
+    this.motoristas = new Map<String,Motorista>();
+    this.viaturas = new Map<String,Viatura>();
+    this.viagens = new Map<String,Viagem>();
+  }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  public UMeR(Map<String,Cliente> clientes, Map<String,Motorista> motorista, Map<String,Viatura> viaturas, Map<String,Viagem> viagens) {
+    this.clientes = new Map<String,Cliente>();
+    this.motoristas = new Map<String,Motorista>();
+    this.viaturas = new Map<String,Viatura>();
+    this.viagens = new Map<String,Viagem>();
+  }
+
 }
