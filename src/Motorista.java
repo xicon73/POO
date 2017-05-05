@@ -7,7 +7,7 @@ import static java.lang.System.out;
  * @author my name
  */
 
-public class Motorista
+public class Motorista extends Cliente
 {
     private String email;
     private String password;
