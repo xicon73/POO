@@ -1,33 +1,65 @@
+import java.util.*;
+import java.io.*;
+import static java.lang.System.out;
 
-/**
- * Write a description of class Viatura here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Viatura
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class Viatura {
+  private Coordenadas localizacao;
+  private Motorista condutor;
+  private Int kms;
+  private Int qualidade;
 
-    /**
-     * Constructor for objects of class Viatura
-     */
-    public Viatura()
-    {
-        // initialise instance variables
-        x = 0;
-    }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  public Viatura(){
+      this.localizacao = "";
+      this.condutor = "";
+      this.kms = 0;
+      this.qualidade = 0;
+  }
+  public Viatura(Coordenadas localizacao, Motorista condutor, Int kms, Int qualidade){
+      this.localizacao = localizacao.clone();
+      this.condutor = condutor.clone();
+      this.km = km;
+      this.qualidade = qualidade;
+  }
+
+  public Viatura(Viatura m){
+      this.localizacao = m.getLocalizacao();
+      this.condutor = m.getCondutor();
+      this.kms = m.getKms();
+      this.qualidade = m.getQualidade();
+  }
+
+  public Coordenadas getLocalizacao() {
+      return localizacao;
+  }
+
+  public Motorista getCondutor() {
+      return condutor;
+  }
+
+  public Int getKms() {
+      return kms;
+  }
+
+  public Int getQualidade() {
+      return qualidade;
+  }
+
+  public void setLocalizacao(Coordenadas localizacao) {
+      this.localizacao = localizacao;
+  }
+
+  public void setCondutor(Motorista condutor) {
+      this.condutor = condutor;
+  }
+
+  public void setKms(Int kms) {
+      this.kms = kms;
+  }
+
+  public void setQualdiade(Int qualidade) {
+      this.qualidade = qualidade;
+  }
+
+
 }
