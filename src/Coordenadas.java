@@ -3,54 +3,43 @@ import java.io.*;
 import static java.lang.System.out;
 
 
-public class Coordenadas
+public class Coordenadas implements java.io.Serializable
 {
-    private int x;
-    private int y;
+    private double x, y;
 
     public Coordenadas(){
         this.x = 0;
         this.y = 0;
     }
-
-    public Coordenadas(int x, int y){
+    public Coordenadas(double x, double y){
         this.x = x;
         this.y = y;
     }
-
-    public Coordenadas(Coordenadas p){
-        this.x = p.getX();
-        this.y = p.getY();
+    public Coordenadas(Coordenadas c){
+        this.x = c.getX();
+        this.y = c.getY();
     }
 
-    public int getX(){
-        return this.x;
+    public double getX(){ return this.x; }
+    public double getY(){ return this.y; }
+    public void setX(double x){ this.x = x; }
+    public void setY(double y){ this.y = y; }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        String xxs, yys;
+        sb.append("("+Math.abs(this.x)+"º "+xxs+", "+Math.abs(this.y)+"º "+yys+")");
+        return sb.toString();
     }
 
-    public int getY(){
-        return this.y;
-    }
-
-    public boolean equal(Object o){
-        if(o == this) return true;
-        if(o == null || o.getClass() != this.getClass()) return false;
-        else{
-            Coordenadas p = (Coordenadas) o;
-            return (this.x == p.getX() && this.y == p.getY());
-        }
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if((o==null) || (this.getClass() != o.getClass())) return false;
+        Coordenadas a = (Coordenadas) o;
+        return (this.x == a.getC() && this.y == a.getY());
     }
 
     public Coordenadas clone(){
         return new Coordenadas(this);
     }
-
-    public void setX(int x){
-        this.x = x;
-    }
-
-    public void setY(int y){
-        this.y = y;
-    }
-
-
 }

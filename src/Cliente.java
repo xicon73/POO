@@ -3,7 +3,7 @@ import java.io.*;
 import static java.lang.System.out;
 /**
  * Classe Cliente
- * 
+ *
  * @author Cláudia Marques
  * @version 0.2
  */
@@ -14,7 +14,7 @@ public class Cliente
     private String nome;
     private String morada;
     private GregorianCalendar data_nascimento;
-    
+
     /**
      * Construtor vazio, ou seja, inicializa um Cliente a nulo
      */
@@ -25,7 +25,7 @@ public class Cliente
         this.morada = "";
         this.data_nascimento = new GregorianCalendar();
     }
-    
+
     /**
      * Construtor parametrizado, ou seja, recebe um email, uma password, um nome, uma morada e uma data de nascimento
      * @param email Email do Cliente
@@ -41,7 +41,7 @@ public class Cliente
         this.morada = morada;
         this.data_nascimento = d;
     }
-    
+
     /**
      * Construtor de cópia, ou seja, copia os dados de um Cliente já existente.
      * @param c O Cliente que vamos copiar.
@@ -53,7 +53,11 @@ public class Cliente
         this.morada = c.getMorada();
         this.data_nascimento = c.getDate();
     }
-    
+
+    public Viagem fazerViagem(Cliente c, Coordenadas origem, Coordenadas destino){
+      
+    }
+
     /*
      * GETS
      */
@@ -61,27 +65,27 @@ public class Cliente
      * A função getEmail devolve o email do Cliente.
      */
     public String getEmail(){ return email; }
-    
+
     /**
      * A função getPassword devolve a password do Cliente.
      */
     public String getPassword() { return password; }
-    
+
     /**
      * A função getNome devolve o nome do Cliente.
      */
     public String getNome(){ return nome; }
-    
+
     /**
      * A função getMorada devolve a morada do Cliente.
      */
     public String getMorada(){ return morada; }
-    
+
     /**
      * A função getDate devolve a Data de Nascimento do Cliente.
      */
     public GregorianCalendar getDate(){ return (GregorianCalendar)data_nascimento.clone(); }
-    
+
     /*
      * SETS
      */
@@ -90,30 +94,30 @@ public class Cliente
      * @param email O novo email que irá substituir o antigo.
      */
     public void setEmail(String email){ this.email = email; }
-    
+
     /**
      * A função setPassword modifica a password do Cliente.
      * @param pw A nova password que irá substituir o antigo.
      */
     public void setPassword(String pw) { password = pw; }
-    
+
     /**
      * A função setNome modifica o nome do Cliente.
      * @param nome O novo nome que irá substituir o antigo.
      */
      public void setNome(String nome){ this.nome=nome; }
-     
+
     /**
      * A função setMorada modifica a morada do Utilizador.
      * @param morada A nova morada que irá substituir a antiga.
      */
     public void setMorada(String morada){ this.morada=morada; }
-    
+
     /**
      * A função setDate modifica a data de nascimento do Utilizador.
      * @param d A nova data de nascimento que irá substituir a antiga.
      */
     public void setDate(GregorianCalendar d){this.data_nascimento=(GregorianCalendar)d.clone();}
-    
+
     public Cliente clone(){return new Cliente(this);}
 }

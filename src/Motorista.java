@@ -46,6 +46,15 @@ public class Motorista extends Cliente {
         this.estado = m.getEstado();
     }
 
+    public HashMap<String, Motoristas> motoristasLivres(){
+      HashSet<String, Motorista> motoristasLiv = new HashSet<String, Motorista>();
+      for(String email: this.motoristas.keySet()){
+        if(this.motoristas.getEstado().equals(1)){
+          motoristas.put(this.motoristas.get(email).clone());
+        }
+      }
+    }
+
     /*
      * GETS
      */
@@ -77,6 +86,6 @@ public class Motorista extends Cliente {
     public void setEstado(int estado) {
       this.estado = estado;
     }
-    
+
     public Motorista clone(){return new Motorista(this);}
 }

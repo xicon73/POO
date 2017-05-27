@@ -21,4 +21,39 @@ public class UMer implements Serializable{
     this.viagens = new HashMap<String,Viagem>();
   }
 
+  public UMer(UMer um) {
+    this.clientes = um.getClientes();
+    this.motoristas = um.getMotoristas();
+    this.viaturas = um.getViaturas();
+    this.viagens = um.getViagens();
+  }
+
+  public HashMap<String, Cliente> getClientes (){
+    HashMap<String, Cliente> clientes = new HashMap<String, Cliente>();
+    for(String email: this.clientes.keySet()){
+      clientes.put(email,this.clientes.get(email).clone());
+    }
+    return clientes;
+  }
+
+  public HashMap<String, Motoristas> getMotoristas (){
+    HashMap<String, Motorista> motoristas = new HashMap<String, Motorista>();
+    for(String email: this.motoristas.keySet()){
+      motoristas.put(email,this.motoristas.get(email).clone());
+    }
+    return motoristas;
+  }
+
+  public Cliente getCliente(String email){
+      if(!this.clientes.containsKey(email)) return null;
+      return this.clientes.get(email).clone();
+  }
+
+  public Motorista getMotorista(String email){
+      if(!this.motoristas.containsKey(email)) return null;
+      return this.motoristas.get(email).clone();
+  }
+
+
+
 }
