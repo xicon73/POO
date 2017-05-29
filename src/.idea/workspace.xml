@@ -46,9 +46,36 @@
         <entry file="file://$PROJECT_DIR$/Viatura.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+              <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1238#1239#0" expanded="false" />
+                <element signature="e#1271#1272#0" expanded="false" />
+                <element signature="e#1318#1319#0" expanded="false" />
+                <element signature="e#1360#1361#0" expanded="false" />
+                <element signature="e#1392#1393#0" expanded="false" />
+                <element signature="e#1423#1424#0" expanded="false" />
+                <element signature="e#1470#1471#0" expanded="false" />
+                <element signature="e#1512#1513#0" expanded="false" />
+                <element signature="e#1544#1545#0" expanded="false" />
+                <element signature="e#1575#1576#0" expanded="false" />
+                <element signature="e#1622#1623#0" expanded="false" />
+                <element signature="e#1664#1665#0" expanded="false" />
+                <element signature="e#1710#1711#0" expanded="false" />
+                <element signature="e#1740#1741#0" expanded="false" />
+                <element signature="e#1776#1777#0" expanded="false" />
+                <element signature="e#1803#1804#0" expanded="false" />
+                <element signature="e#1828#1829#0" expanded="false" />
+                <element signature="e#1850#1851#0" expanded="false" />
+                <element signature="e#1881#1882#0" expanded="false" />
+                <element signature="e#1909#1910#0" expanded="false" />
+                <element signature="e#1966#1967#0" expanded="false" />
+                <element signature="e#2008#2009#0" expanded="false" />
+                <element signature="e#2057#2058#0" expanded="false" />
+                <element signature="e#2093#2094#0" expanded="false" />
+                <element signature="e#2126#2127#0" expanded="false" />
+                <element signature="e#2152#2153#0" expanded="false" />
+                <element signature="e#2197#2198#0" expanded="false" />
+                <element signature="e#2235#2236#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -57,12 +84,10 @@
       <file leaf-file-name="Motorista.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Motorista.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+            <state relative-caret-position="420">
+              <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="87" />
               <folding>
-                <element signature="e#1642#1661#0" expanded="false" />
-                <element signature="e#2607#2608#0" expanded="false" />
-                <element signature="e#2641#2642#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,9 +96,11 @@
       <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="96" column="33" lean-forward="false" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="699">
+              <caret line="139" column="34" lean-forward="false" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,12 +108,12 @@
       <file leaf-file-name="Core.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Core.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="213" column="34" lean-forward="true" selection-start-line="213" selection-start-column="34" selection-end-line="213" selection-end-column="34" />
+            <state relative-caret-position="606">
+              <caret line="512" column="36" lean-forward="false" selection-start-line="512" selection-start-column="36" selection-end-line="512" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#login#0;class#Core#0" expanded="false" />
-                <element signature="method#removerCache#0;class#Core#0" expanded="false" />
+                <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
                 <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
                 <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
                 <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
@@ -97,13 +124,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="UMer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UMer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Coordenadas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Coordenadas.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="false" />
+                <element signature="e#1373#1374#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -123,9 +161,9 @@
         <option value="$PROJECT_DIR$/Persistência.java" />
         <option value="$PROJECT_DIR$/Coordenadas.java" />
         <option value="$PROJECT_DIR$/Viagem.java" />
-        <option value="$PROJECT_DIR$/main.java" />
         <option value="$PROJECT_DIR$/Cliente.java" />
         <option value="$PROJECT_DIR$/Viatura.java" />
+        <option value="$PROJECT_DIR$/main.java" />
         <option value="$PROJECT_DIR$/Core.java" />
       </list>
     </option>
@@ -578,12 +616,12 @@
       <workItem from="1495966847983" duration="1850000" />
       <workItem from="1495993760194" duration="1525000" />
       <workItem from="1496052107729" duration="2873000" />
-      <workItem from="1496094187352" duration="2496000" />
+      <workItem from="1496094187352" duration="4438000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8744000" />
+    <option name="totallyTimeSpent" value="10686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1124" height="1050" extended-state="6" />
@@ -657,7 +695,34 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="false" />
+            <element signature="e#1271#1272#0" expanded="false" />
+            <element signature="e#1318#1319#0" expanded="false" />
+            <element signature="e#1360#1361#0" expanded="false" />
+            <element signature="e#1392#1393#0" expanded="false" />
+            <element signature="e#1423#1424#0" expanded="false" />
+            <element signature="e#1470#1471#0" expanded="false" />
+            <element signature="e#1512#1513#0" expanded="false" />
+            <element signature="e#1544#1545#0" expanded="false" />
+            <element signature="e#1575#1576#0" expanded="false" />
+            <element signature="e#1622#1623#0" expanded="false" />
+            <element signature="e#1664#1665#0" expanded="false" />
+            <element signature="e#1710#1711#0" expanded="false" />
+            <element signature="e#1740#1741#0" expanded="false" />
+            <element signature="e#1776#1777#0" expanded="false" />
+            <element signature="e#1803#1804#0" expanded="false" />
+            <element signature="e#1828#1829#0" expanded="false" />
+            <element signature="e#1850#1851#0" expanded="false" />
+            <element signature="e#1881#1882#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="false" />
+            <element signature="e#1966#1967#0" expanded="false" />
+            <element signature="e#2008#2009#0" expanded="false" />
+            <element signature="e#2057#2058#0" expanded="false" />
+            <element signature="e#2093#2094#0" expanded="false" />
+            <element signature="e#2126#2127#0" expanded="false" />
+            <element signature="e#2152#2153#0" expanded="false" />
+            <element signature="e#2197#2198#0" expanded="false" />
+            <element signature="e#2235#2236#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -667,9 +732,7 @@
         <state relative-caret-position="120">
           <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding>
-            <element signature="e#1642#1661#0" expanded="false" />
-            <element signature="e#2607#2608#0" expanded="false" />
-            <element signature="e#2641#2642#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -678,7 +741,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1395">
           <caret line="96" column="33" lean-forward="false" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,7 +754,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
-            <element signature="method#removerCache#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
@@ -723,7 +788,8 @@
         <state relative-caret-position="360">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1373#1374#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -739,6 +805,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -749,7 +816,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
-            <element signature="method#removerCache#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
@@ -763,7 +830,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -791,7 +860,8 @@
         <state relative-caret-position="360">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1373#1374#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -829,33 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UMer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Motorista.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding>
-            <element signature="e#1642#1661#0" expanded="false" />
-            <element signature="e#2607#2608#0" expanded="false" />
-            <element signature="e#2641#2642#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="96" column="33" lean-forward="false" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -867,9 +910,36 @@
     <entry file="file://$PROJECT_DIR$/Viatura.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="false" />
+            <element signature="e#1271#1272#0" expanded="false" />
+            <element signature="e#1318#1319#0" expanded="false" />
+            <element signature="e#1360#1361#0" expanded="false" />
+            <element signature="e#1392#1393#0" expanded="false" />
+            <element signature="e#1423#1424#0" expanded="false" />
+            <element signature="e#1470#1471#0" expanded="false" />
+            <element signature="e#1512#1513#0" expanded="false" />
+            <element signature="e#1544#1545#0" expanded="false" />
+            <element signature="e#1575#1576#0" expanded="false" />
+            <element signature="e#1622#1623#0" expanded="false" />
+            <element signature="e#1664#1665#0" expanded="false" />
+            <element signature="e#1710#1711#0" expanded="false" />
+            <element signature="e#1740#1741#0" expanded="false" />
+            <element signature="e#1776#1777#0" expanded="false" />
+            <element signature="e#1803#1804#0" expanded="false" />
+            <element signature="e#1828#1829#0" expanded="false" />
+            <element signature="e#1850#1851#0" expanded="false" />
+            <element signature="e#1881#1882#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="false" />
+            <element signature="e#1966#1967#0" expanded="false" />
+            <element signature="e#2008#2009#0" expanded="false" />
+            <element signature="e#2057#2058#0" expanded="false" />
+            <element signature="e#2093#2094#0" expanded="false" />
+            <element signature="e#2126#2127#0" expanded="false" />
+            <element signature="e#2152#2153#0" expanded="false" />
+            <element signature="e#2197#2198#0" expanded="false" />
+            <element signature="e#2235#2236#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -879,6 +949,35 @@
         <state relative-caret-position="390">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
+            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1373#1374#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UMer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="139" column="34" lean-forward="false" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Motorista.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="87" />
+          <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -886,12 +985,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="213" column="34" lean-forward="true" selection-start-line="213" selection-start-column="34" selection-end-line="213" selection-end-column="34" />
+        <state relative-caret-position="606">
+          <caret line="512" column="36" lean-forward="false" selection-start-line="512" selection-start-column="36" selection-end-line="512" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
-            <element signature="method#removerCache#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />

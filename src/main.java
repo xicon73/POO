@@ -20,8 +20,9 @@ public class Main implements Serializable{
         while(flag){
             out.println("-----------GeocachingPOO----------");
             out.println("1 - Registar utilizador");
-            out.println("2 - Login");
-            out.println("3 - Exit");
+            out.println("2 - Registar motorista");
+            out.println("3 - Login");
+            out.println("0 - Exit");
             out.println("----------------------------------");
             out.print("Decisão: " );
 
@@ -32,14 +33,15 @@ public class Main implements Serializable{
                     case 1:
                         core.registarUser();
                         break;
-
                     case 2:
+                        core.registarDriver();
+                        break;
+                    case 3:
                         if(core.login()==1){
                             afterLogin();
                         }
                         break;
-
-                    case 3:
+                    case 0:
                         flag=false;
                         break;
 
@@ -58,10 +60,6 @@ public class Main implements Serializable{
                 flag=false;
                 run();
             }catch(NomeInvalidoException e){
-                out.println(e.getMessage());
-                flag=false;
-                run();
-            }catch(SexoInvalidoException e){
                 out.println(e.getMessage());
                 flag=false;
                 run();
@@ -103,10 +101,14 @@ public class Main implements Serializable{
             out.println("4 - Definições de conta");
             out.println("5 - Lista utilizadores");
             out.println("6 - Remover conta");
+            if(core.isDriver()) {
+                out.println("7 - Alterar estado");
+                out.println("8 - Registar Viatura");
+            }
             if(core.isAdmin()) {
                 out.println("7 - Carregar estado");
                 out.println("8 - Guardar estado"); }
-            out.println("9 - Exit");
+            out.println("0 - Exit");
             out.println("----------------------------------");
             out.print("Decisão: " );
 
@@ -143,6 +145,9 @@ public class Main implements Serializable{
                             core = state.carregarEstado();
                             out.println("Estado carregado com sucesso, por favor faça login de novo!\n");
                             flag=false;
+                        }else if(core.isDriver()){
+                            core.alterarEstado();
+                            break;
                         }else
                             throw new PrivilegiosInsuficientesException();
 
@@ -152,12 +157,15 @@ public class Main implements Serializable{
                         if(core.isAdmin()){
                             state.guardarEstado(core);
                             out.println("Estado guardado com sucesso!\n");
+                        }else if(core.isDriver()){
+                            core.registarViatura();
+                            break;
                         }else
                             throw new PrivilegiosInsuficientesException();
 
                         break;
 
-                    case 9:
+                    case 0:
                         flag=false;
                         break;
 

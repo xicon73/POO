@@ -144,19 +144,30 @@ public class Core implements Serializable {
         double distancia;
         String viatura;
         char confirmacao;
-        TreeMap<String, Viatura> viaturasLivres = getLivres();
+        int pessoas;
+
+
+        out.println("-----------UMer: Fazer Viagem---------");
+        out.print("Introduza a sua posição X: ");
+        origem.setX(input.nextDouble());
+        out.print("Introduza a sua posição Y: ");
+        origem.setY(input.nextDouble());
+        out.print("Introduza o seu destino X: ");
+        destino.setX(input.nextDouble());
+        out.print("Introduza o seu destino Y: ");
+        destino.setY(input.nextDouble());
+        out.print("Introduza o número de ocupantes na viagem: ");
+        pessoas = input.nextInt();
+
+
+        TreeMap<String, Viatura> viaturasLivres = getLivres(pessoas,origem);
         if(viaturasLivres.size()==0) {
             out.println("Não existem motoristas disponíveis!");
             catch MotoristasOcupadosException;
         }
-        out.println("-----------UMer: Fazer Viagem---------");
-        out.print("Introduza a sua posição: ");
-        origem = input.next();
-        out.print("Introduza o seu destino: ");
-        destino = input.next();
         out.println("-----------UMer: Lista de motoristas disponíveis---------");
         for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
-            out.println(entry.getValue().toString(entry.getValue()));
+            if(this.entry.getCapacidade >= pessoas) out.println(entry.getValue().toString(entry.getValue()));
         }
         out.print("Selecione a viatura desejada.");
         viatura = input.next();
@@ -178,6 +189,22 @@ public class Core implements Serializable {
         else {catch ViagemCanceladaException;}
     }
 
+    public void historicoViagens() {
+
+    }
+
+    public void consultarEstatisticas() {
+
+    }
+
+    public void alterarEstado() {
+        int estado;
+        out.println("-----------UMer: Alterar Estado---------");
+        out.print("Introduza o seu estado (0 - Fora de serviço, 1 - Livre, 2 - Em viagem)");
+        estado = input.nextInt();
+        currentUser.setEstado(estado);
+    }
+
 
     /**
      * A função registarCache regista uma cache.
@@ -185,10 +212,9 @@ public class Core implements Serializable {
     public void registarViatura() throws {
         for (int i = 0; i < 100; i++)out.println();
         int tipo,qualidade, velocidade, preco;
-        String criador, descricao;
-        Coordenadas coord = new Coordenadas();
+        String criador;
         Boolean f = true;
-        criador = currentUser.getNome();
+        criador = currentUser.getEmail();
 
         out.println("------Registo de viatura------");
         out.println("1 - Carrinha de 9 lugares");
@@ -218,19 +244,30 @@ public class Core implements Serializable {
                 case 2:
                     Carro viatura2 = new Carro();
 
-                    out.println("Criador: " + criador);
-                    cache2.setCriador(criador);
-
-                    caches.put(cache2.getCodigo(), cache2);
-                    out.println(cache2.getTipo() + " adicionada com sucesso!\n");
+                    out.print("Introduza a qualidade do Carro: ");
+                    qualidade = input.nextInt();
+                    out.print("Introduza a velocidade do Carro: ");
+                    velocidade = input.nextInt();
+                    out.print("Introduza o preco do Carro: ");
+                    preco = input.nextInt();
+                    // Registar a viatura
+                    caches.put(cache1.getCodigo(), cache1);
+                    out.println(cache1.getTipo() + " adicionada com sucesso!\n");
                     f = false;
                     break;
 
                 case 3:
                     Mota viatura3 = new Mota();
 
-                    caches.put(cache3.getCodigo(), cache3);
-                    out.println(cache3.getTipo() + " adicionada com sucesso!\n");
+                    out.print("Introduza a qualidade da Mota: ");
+                    qualidade = input.nextInt();
+                    out.print("Introduza a velocidade da Mota: ");
+                    velocidade = input.nextInt();
+                    out.print("Introduza o preco da Mota: ");
+                    preco = input.nextInt();
+                    // Registar a viatura
+                    caches.put(cache1.getCodigo(), cache1);
+                    out.println(cache1.getTipo() + " adicionada com sucesso!\n");
                     f = false;
                     break;
                 case 4:
@@ -243,30 +280,6 @@ public class Core implements Serializable {
         }
     }
 
-    /**
-     * A função removerCache remove uma cache.
-     */
-    public void removerCache() throws PrivilegiosInsuficientesException,CacheNaoExisteException {
-        for (int i = 0; i < 100; i++) out.println();
-        String codigo;
-
-        out.println("-----------GeocachingPOO: Remoção de cache---------");
-        out.print("Introduza o codigo da cache a remover: ");
-        codigo = input.next();
-
-        if (isAdmin() || (currentUser.getNome().equals(caches.get(codigo).getCriador()))) {
-            if (caches.get(codigo) == null)
-                throw new CacheNaoExisteException();
-            else {
-                caches.remove(codigo); // se a cache existe, remove!
-                if (reportedCaches.get(codigo) != null)
-                    reportedCaches.remove(codigo); // se esta cache estava  reportada removemos tambem
-                out.println("Removido com sucesso!");
-            }
-        }else{
-            throw new PrivilegiosInsuficientesException();
-        }
-    }
 
     /**
      * A função reportarCache verifica se um Utilizador encontra uma anomalia na cache, e caso isso aconteça reporta a cache.
@@ -401,7 +414,7 @@ public class Core implements Serializable {
         for (int i = 0; i < 100; i++)out.println();
         Boolean v = true;
 
-        out.println("-----------GeocachingPOO: Definições de conta---------");
+        out.println("-----------UMer: Definições de conta---------");
         out.println("1 - Alterar password");
         out.println("2 - Alterar data nascimento");
         out.println("3 - Alterar morada");
@@ -414,7 +427,7 @@ public class Core implements Serializable {
         while (v) {
             switch (decisao) {
                 case 1:
-                    out.println("\n-----------GeocachingPOO: Alterar password---------");
+                    out.println("\n-----------UMer: Alterar password---------");
                     out.print("Introduza password nova: ");
                     currentUser.setPw(input.next());
                     out.println("Sucesso!");
@@ -423,7 +436,7 @@ public class Core implements Serializable {
                     break;
 
                 case 2:
-                    out.println("\n-----------GeocachingPOO: Alterar data de nascimento---------");
+                    out.println("\n-----------UMer: Alterar data de nascimento---------");
                     String[] dataSplit;
                     String data;
                     int dia,mes,ano;
@@ -454,7 +467,7 @@ public class Core implements Serializable {
                     break;
 
                 case 3:
-                    out.println("\n-----------GeocachingPOO: Alterar morada---------");
+                    out.println("\n-----------UMer: Alterar morada---------");
                     out.print("Introduza morada nova: ");
                     currentUser.setMorada(input.next());
                     out.println("Sucesso!");
@@ -464,7 +477,7 @@ public class Core implements Serializable {
 
                 case 4:
                     if (isAdmin()) {
-                        out.println("\n-----------GeocachingPOO: Alterar privilegios---------");
+                        out.println("\n-----------UMer: Alterar privilegios---------");
                         Utilizador t = new Utilizador();
                         out.print("Introduza o email do utilizador: ");
                         t = utilizadores.get(input.next());
@@ -497,7 +510,7 @@ public class Core implements Serializable {
     public void listaUsers() {
         for (int i = 0; i < 100; i++) out.println();
 
-        out.println("-----------GeocachingPOO: Lista de utilizadores---------");
+        out.println("-----------UMer: Lista de utilizadores---------");
         for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
             out.println(entry.getValue().toString(entry.getValue()));
         }
