@@ -5,12 +5,20 @@ import static java.lang.System.out;
 public class Viagem {
 
     private GregorianCalendar data;
+    /*public string cliente;
+      public string viatura;
+      public string motorista
+     */
+
     public Cliente cliente;
     private Viatura viatura;
     private Coordenadas origem;
     private Coordenadas destino;
     private float distancia;
     private float preco;
+    private float tempoPrevisto;
+    private float tempoReal;
+    private float desvio;
 
     public Viagem(){
         this.data = new GregorianCalendar();
@@ -20,9 +28,12 @@ public class Viagem {
         this.destino = new Coordenadas();
         this.distancia = 0f;
         this.preco = 0f;
+        this.tempoPrevisto=0f;
+        this.tempoReal=0f;
+        this.desvio=0f;
     }
 
-    public Viagem(GregorianCalendar date, Cliente client, Viatura car, Coordenadas origin, Coordenadas destiny, Float distance, Float price){
+    public Viagem(GregorianCalendar date, Cliente client, Viatura car, Coordenadas origin, Coordenadas destiny, float distance, float price, float tempoPrevisto, float tempoReal, float desvio){
         this.data = new GregorianCalendar();
         this.cliente=client.clone();
         this.viatura=car.clone();
@@ -30,6 +41,9 @@ public class Viagem {
         this.destino=destiny.clone();
         this.distancia=distance;
         this.preco=price;
+        this.tempoPrevisto=tempoPrevisto;
+        this.tempoReal=tempoReal;
+        this.desvio=desvio;
     }
 
     public Viagem(Viagem v){
@@ -40,6 +54,9 @@ public class Viagem {
         this.destino=v.getDestino();
         this.distancia=v.getDistancia();
         this.preco=v.getPreco();
+        this.tempoPrevisto=v.getTempoPrevisto();
+        this.tempoReal=v.getTempoReal();
+        this.desvio=v.getDesvio();
     }
 
 
@@ -89,7 +106,7 @@ public class Viagem {
         return distancia;
     }
 
-    public void setDistancia(Float distancia) {
+    public void setDistancia(float distancia) {
         this.distancia = distancia;
     }
 
@@ -97,7 +114,19 @@ public class Viagem {
       return preco;
     }
 
-    public void setPreco(Float preco){
+    public void setPreco(float preco){
       this.preco = preco;
     }
+
+    public float getTempoPrevisto() return tempoPrevisto;
+
+    public void setTempoPrevisto(float tempoPrevisto) this.tempoPrevisto = tempoPrevisto;
+
+    public float getTempoReal() {return tempoReal;}
+
+    public void setTempoReal(float tempoReal) { this.tempoReal = tempoReal;}
+
+    public float getDesvio() {return desvio}
+
+    public void setDesvio(float desvio) {this.desvio = desvio}
 }

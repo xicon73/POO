@@ -7,7 +7,7 @@ public class Viatura {
   private int velocidade;
   private int preco_base;
   private Coordenadas localizacao;
-  private Motorista condutor;
+  private String condutor;
   private int kms;
   private int qualidade;
 
@@ -17,11 +17,11 @@ public class Viatura {
       this.velocidade = 0;
       this.preco_base = 0;
       this.localizacao = new Coordenadas();
-      this.condutor = new Motorista();
+      this.condutor = "";
       this.kms = 0;
       this.qualidade = 0;
   }
-  public Viatura(int capacidade, int velocidade, int preco_base, Coordenadas localizacao, Motorista condutor, int kms, int qualidade){
+  public Viatura(int capacidade, int velocidade, int preco_base, Coordenadas localizacao, String condutor, int kms, int qualidade){
       this.capacidade = capacidade;
       this.velocidade = velocidade;
       this.preco_base = preco_base;
