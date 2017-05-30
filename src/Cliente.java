@@ -38,14 +38,14 @@ public class Cliente
      * @param morada Morada do Cliente
      * @param d Data de nascimento do Cliente
      */
-    public Cliente(String email, String password, String nome, String morada, GregorianCalendar d, int a, int despesa){
+    public Cliente(String email, String password, String nome, String morada, GregorianCalendar d, int a){
         this.email = email;
         this.password = password;
         this.nome = nome;
         this.morada = morada;
         this.data_nascimento = d;
         this.admin = a;
-        this.despesa=despesa;
+        this.despesa=0;
     }
 
     /**

@@ -14,15 +14,13 @@ import java.io.*;
  * @version 1.0
  */
 public class Core implements Serializable {
-    private TreeMap<String, Utilizador> utilizadores = new TreeMap<String, Utilizador>();
-    private TreeMap<String, Cache> caches = new TreeMap<String, Cache>();
-    private TreeMap<String, Cache> reportedCaches = new TreeMap<String, Cache>();
-    private TreeMap<String, Evento> eventos = new TreeMap<String, Evento>();
+    private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>();
+    private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>();
+    private TreeMap<String, Viagem> viagens = new TreeMap<String, Viagem>();
     static Scanner input = new Scanner(System.in).useDelimiter("\\n");
 
-    Utilizador admin = new Utilizador("admin", "123", "Administrador", 'M',"Portugal", new GregorianCalendar(2000, 1, 1), 1);
-    Utilizador currentUser = new Utilizador();
-    Cache cache1 = new Cache("Octávio Maia", new Coordenadas(1, 1), 2,"Procurem pela arvore mais alta", null);
+    Cliente admin = new Cliente("admin@umer", "1234", "Administrador", "Portugal", new GregorianCalendar(2000, 1, 1), 1);
+    Cliente currentUser = new Cliente();
 
     /**
      * Construtor vazio.
@@ -35,7 +33,7 @@ public class Core implements Serializable {
     /**
      * A função getCurrentUser devolve um Utilizador.
      */
-    public Utilizador getCurrentUser() {
+    public Cliente getCurrentUser() {
         return currentUser.clone();
     }
 
@@ -139,12 +137,15 @@ public class Core implements Serializable {
      */
     public void fazerViagem() throws MotoristasOcupadosExcepetion, ViagemCanceladaException {
         for (int i = 0; i < 100; i++) out.println();
+        String cliente = currentUser.getEmail();
         Coordenadas origem;
         Coordenadas destino;
         double distancia;
         String viatura;
+        double km = 0;
         char confirmacao;
         int pessoas;
+        Viagem viagem = new Viagem();
 
 
         out.println("-----------UMer: Fazer Viagem---------");
@@ -152,12 +153,18 @@ public class Core implements Serializable {
         origem.setX(input.nextDouble());
         out.print("Introduza a sua posição Y: ");
         origem.setY(input.nextDouble());
+        viagem.setOrigem(origem);
         out.print("Introduza o seu destino X: ");
         destino.setX(input.nextDouble());
         out.print("Introduza o seu destino Y: ");
         destino.setY(input.nextDouble());
+        viagem.setDestino(destino);
+        distancia = getDistancia(origem,destino);
+        km = distancia;
+        viagem.setDistancia(distancia);
         out.print("Introduza o número de ocupantes na viagem: ");
         pessoas = input.nextInt();
+
 
 
         TreeMap<String, Viatura> viaturasLivres = getLivres(pessoas,origem);
@@ -167,17 +174,21 @@ public class Core implements Serializable {
         }
         out.println("-----------UMer: Lista de motoristas disponíveis---------");
         for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
-            if(this.entry.getCapacidade >= pessoas) out.println(entry.getValue().toString(entry.getValue()));
+            if(this.entry.getCapacidade() >= pessoas) out.println(entry.getValue().toString(entry.getValue()));
         }
         out.print("Selecione a viatura desejada.");
         viatura = input.next();
-        //distancia = getDistancia(viatura,origem);
+        viagem.setViatura(viatura);
+        distancia = getDistancia(viatura,origem);
+        km += distancia;
         out.println("A viatura está a" + distancia + "km e demora" + tempo + "minutos a chegar!");
-        //distancia = getDistancia(origem,destino);
         out.println("A sua viagem demorará" + tempo + "minutos e terá um custo de" + custo + "euros! Aceita? (Y/N)");
         confirmacao=input.next().charAt(0);
 
         if(confirmacao==Y) {
+            viagem.setPreco(custo);
+            viagem.setTempoPrevisto(tempo);
+            viagens.put(viagem.getId(), viagem);
             int avaliacao;
             //adiciona a viagem aos utilizadores
             //adiciona distancia à viatura e motorista

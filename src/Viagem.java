@@ -10,8 +10,8 @@ public class Viagem {
       public string motorista
      */
 
-    public Cliente cliente;
-    private Viatura viatura;
+    public String cliente;
+    private String viatura;
     private Coordenadas origem;
     private Coordenadas destino;
     private float distancia;
@@ -22,8 +22,8 @@ public class Viagem {
 
     public Viagem(){
         this.data = new GregorianCalendar();
-        this.cliente = new Cliente();
-        this.viatura = new Viatura();
+        this.cliente = "";
+        this.viatura = "";
         this.origem = new Coordenadas();
         this.destino = new Coordenadas();
         this.distancia = 0f;
@@ -33,10 +33,10 @@ public class Viagem {
         this.desvio=0f;
     }
 
-    public Viagem(GregorianCalendar date, Cliente client, Viatura car, Coordenadas origin, Coordenadas destiny, float distance, float price, float tempoPrevisto, float tempoReal, float desvio){
+    public Viagem(GregorianCalendar date, String client, String car, Coordenadas origin, Coordenadas destiny, float distance, float price, float tempoPrevisto, float tempoReal, float desvio){
         this.data = new GregorianCalendar();
-        this.cliente=client.clone();
-        this.viatura=car.clone();
+        this.cliente=client;
+        this.viatura=car;
         this.origem=origin.clone();
         this.destino=destiny.clone();
         this.distancia=distance;
