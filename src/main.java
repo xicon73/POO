@@ -5,6 +5,9 @@ import static java.lang.System.out;
 import Exceptions.*;
 
 
+/* VER AS EXCEPTIONS */
+
+
 public class Main implements Serializable{
     private Core core = new Core();
     private Persistencia state = new Persistencia();
@@ -107,11 +110,10 @@ public class Main implements Serializable{
                 out.println("9 - Associar-se a uma Viatura");
                 out.println("10 - Desassociar-se de uma Viatura");
             }
-            if(core.isAdmin()) {/*
-                out.println("7 - Remover Utilizadores");
-                out.println("8 - Remover Viaturas");
+            if(core.isAdmin()) {
+                out.println("7 - Remover Viaturas");
                 out.println("8 - Carregar estado");
-                out.println("9 - Guardar estado"); }*/
+                out.println("9 - Guardar estado"); }
             out.println("0 - Exit");
             out.println("----------------------------------");
             out.print("Decisão: " );
@@ -146,9 +148,8 @@ public class Main implements Serializable{
 
                     case 7:
                         if(core.isAdmin()){
-                            core = state.carregarEstado();
-                            out.println("Estado carregado com sucesso, por favor faça login de novo!\n");
-                            flag=false;
+                            core.removerViatura();
+                            out.println("Viatura removida com sucesso!\n");
                         }else if(core.isDriver()){
                             core.alterarEstado();
                         }else
@@ -158,8 +159,9 @@ public class Main implements Serializable{
 
                     case 8:
                         if(core.isAdmin()){
-                            state.guardarEstado(core);
-                            out.println("Estado guardado com sucesso!\n");
+                            core = state.carregarEstado();
+                            out.println("Estado carregado com sucesso, por favor faça login de novo!\n");
+                            flag=false;
                         }else if(core.isDriver()){
                             core.registarViatura();
                         }else
@@ -168,9 +170,12 @@ public class Main implements Serializable{
                         break;
 
                     case 9:
-                        if(core.isDriver()){
+                        if(core.isAdmin()){
+                            state.guardarEstado(core);
+                            out.println("Estado guardado com sucesso!\n");
+                        }else if(core.isDriver()){
                             core.associarViatura();
-                        } else throw new PrivilegiosInsuficientesException();
+                        }else throw new PrivilegiosInsuficientesException();
                         break;
 
                     case 10:

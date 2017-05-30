@@ -8,11 +8,25 @@ import java.io.*;
 /**
  * Class Core, contem todas as funcoes necessarias para o projeto
  *
- * @author Octavio Maia
- * @author Cecilia Marciel
  * @author Claudia Marques
- * @version 1.0
+ * @author Francisco Costa
+ * @author Mauricio Salgado
+ *
  */
+
+
+/**
+ *
+ * TO DO
+ * registo
+ * login
+ * acabar historico
+ * acabar estatisticas
+ * ver os pontos extra
+ *
+ */
+
+
 public class Core implements Serializable {
     private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>(); //ordenada por ordem descrescente do valor gasto
     private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>(); //ordenada por ordem decrescente do numero de km feitos
