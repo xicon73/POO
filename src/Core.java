@@ -14,9 +14,9 @@ import java.io.*;
  * @version 1.0
  */
 public class Core implements Serializable {
-    private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>();
-    private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>();
-    private TreeMap<String, Viagem> viagens = new TreeMap<String, Viagem>();
+    private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>(); //ordenada por ordem descrescente do valor gasto
+    private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>(); //ordenada por ordem decrescente do numero de km feitos
+    private TreeMap<String, Viagem> viagens = new TreeMap<String, Viagem>(); //ordenada por orden crescente da data
     static Scanner input = new Scanner(System.in).useDelimiter("\\n");
 
     Cliente admin = new Cliente("admin@umer", "1234", "Administrador", "Portugal", new GregorianCalendar(2000, 1, 1), 1);
@@ -201,9 +201,20 @@ public class Core implements Serializable {
         else {catch ViagemCanceladaException;}
     }
 
-    public void historicoViagens() {
+    public void historicoViagens() throws SemViagensException() {
+        String utilizador;
+        out.println("----------UMer: Histórico de Viagens ----------");
+        if(currentUser.getAdmin()==1) {
+            out.println("Introduza o email do utilizador: ");
+            utilizador = input.next();
+        }
+        else utilizador = currentUser.getEmail();
+        //PERCORRER a lista de viagens até chegar ao fim ou a 10
+        iterator it
+        /*for(int i = 0; i<10 && it.hasNext(); i++) {
+            it.utilizador.getViagem();*/
 
-    }
+        }
 
     public void consultarEstatisticas() {
         int opcao;
@@ -216,19 +227,28 @@ public class Core implements Serializable {
         opcao = input.nextInt();
         switch(opcao) {
             case 1:
-                String motorista;
+                String motorista = getMelhorMotorista();
+                double km = motorista.getKm();
                 out.println("O melhor motorista é o " + motorista + "com um total de " + km + "kms!");
                 break;
 
             case 2:
+                String cliente = utilizadores.first().getEmail();
+                double gasto = utilizadores.first().getGasto();
+                out.println("O melhor cliente é o " + cliente + "com um total de " + gasto + "euros gasto!");
                 break;
 
             case 3:
+                String viatura = viaturas.first().getId();
+                double km = viaturas.first().getKm();
+                out.println("A viatura com mais km é a vitura com id:  " + viatura + "com um total de " + km + "kms!");
                 break;
-
             case 4:
+                int i = 0;
+                String motorista;
+                double km;
+                //Percorre a lista até encontrar os 10 melhores clientes ou acabar a lista
                 break;
-
             case 5:
                 String viatura;
                 int valor;
