@@ -7,9 +7,10 @@ public class Viatura {
   private int velocidade;
   private int preco_base;
   private Coordenadas localizacao;
-  private String condutor;
+  private String condutor //atual;
   private int kms;
   private int qualidade;
+  //private String[] condutores
 
 
   public Viatura(){
@@ -39,6 +40,11 @@ public class Viatura {
       this.condutor = m.getCondutor();
       this.kms = m.getKms();
       this.qualidade = m.getQualidade();
+  }
+
+  public TreeMap<String, condutor> getLivres (int capacidade, Coordenadas cliente) {
+      TreeMap<String, condutor> motoristasLivres = new TreeMap<String, condutor>;
+      return motoristasLivres;
   }
 
   public int getCapacidade() {

@@ -9,7 +9,7 @@ public class Persistencia implements Serializable{
      * @param e O Core recebido.
      */
     public void guardarEstado(Core e) throws IOException{
-        FileOutputStream fos = new FileOutputStream("GeocachingPOO.state");
+        FileOutputStream fos = new FileOutputStream("UMer.state");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
         oos.writeObject(e);
@@ -20,7 +20,7 @@ public class Persistencia implements Serializable{
      * A função carregarEstado permite carregar um estado.
      */
     public Core carregarEstado() throws IOException,ClassNotFoundException{
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("GeocachingPOO.state"));
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("UMer.state"));
 
         Core novoState = (Core) ois.readObject();
         ois.close();

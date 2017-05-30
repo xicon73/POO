@@ -104,6 +104,8 @@ public class Main implements Serializable{
             if(core.isDriver()) {
                 out.println("7 - Alterar estado");
                 out.println("8 - Registar Viatura");
+                /*out.println("9 - Associar Viatura");*/
+                out.println("10 - Remover Viatura");
             }
             if(core.isAdmin()) {
                 out.println("7 - Carregar estado");
@@ -147,7 +149,6 @@ public class Main implements Serializable{
                             flag=false;
                         }else if(core.isDriver()){
                             core.alterarEstado();
-                            break;
                         }else
                             throw new PrivilegiosInsuficientesException();
 
@@ -159,10 +160,21 @@ public class Main implements Serializable{
                             out.println("Estado guardado com sucesso!\n");
                         }else if(core.isDriver()){
                             core.registarViatura();
-                            break;
                         }else
                             throw new PrivilegiosInsuficientesException();
 
+                        break;
+
+                    case 9:
+                        if(core.isDriver()){
+                            core.associarViatura();
+                        } else throw new PrivilegiosInsuficientesException();
+                        break;
+
+                    case 10:
+                        if(core.isDriver()){
+                            core.associarViatura();
+                        } else throw new PrivilegiosInsuficientesException();
                         break;
 
                     case 0:

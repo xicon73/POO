@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class Moto here.
+ * Write a description of class Carro here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Moto extends Viatura
+public class Carro extends Viatura
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Moto
+     * Constructor for objects of class Carro
      */
-    public Moto()
+    public Carro()
     {
         // initialise instance variables
         x = 0;

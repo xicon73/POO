@@ -209,10 +209,11 @@ public class Core implements Serializable {
     /**
      * A função registarCache regista uma cache.
      */
-    public void registarViatura() throws {
+    public void registarViatura() throws JaTemViaturaException{
         for (int i = 0; i < 100; i++)out.println();
         int tipo,qualidade, velocidade, preco;
         String criador;
+        String sua;
         Boolean f = true;
         criador = currentUser.getEmail();
 
@@ -220,10 +221,15 @@ public class Core implements Serializable {
         out.println("1 - Carrinha de 9 lugares");
         out.println("2 - Carro Ligeiro");
         out.println("3 - Mota");
-        out.println("4 - Sair");
+        out.println("0 - Sair");
         out.println("-----------------------------");
 
         while (f) {
+            out.print("Deseja associar esta nova viatura a si? (Y/N)");
+            sua=input.next();
+            if(sua=='Y') {if(currentUser.getCarro == 1) {throw new JaTemCarroException(); break;}
+            else criador = currentUser.getEmail();}
+            else criador = "";
             out.print("Selecione o tipo de viatura que pretende registar: ");
             tipo = input.nextInt();
             switch (tipo) {
@@ -270,7 +276,7 @@ public class Core implements Serializable {
                     out.println(cache1.getTipo() + " adicionada com sucesso!\n");
                     f = false;
                     break;
-                case 4:
+                case 0:
                     f = false;
                     break;
 
@@ -280,7 +286,21 @@ public class Core implements Serializable {
         }
     }
 
+    public void removerViatura() throws SemViaturaException {
+        String opcao;
+        if(currentUser.getCarro == 0) {throw new SemViaturaException(); break;}
+        out.println("------Remoção de viatura------");
+        out.println("Tem a certeza de que deseja remover a sua viatura? (Y/N)");
+        opcao = input.next().charAt(0);
+        if(opcao == 'Y') {
+            currentUser.setCarro(0);
+            //retiramos o id ou removemos do map?
+        }
 
+
+
+
+    }
     /**
      * A função reportarCache verifica se um Utilizador encontra uma anomalia na cache, e caso isso aconteça reporta a cache.
      */
@@ -343,7 +363,7 @@ public class Core implements Serializable {
     public void estatisticasUser() throws UtilizadorNaoExisteException,AtividadeNullException,DataInvalidaException{
         for (int i = 0; i < 100; i++) out.println();
         String User;
-        int normal = 0, micro = 0, evento = 0, virtual = 0, multi = 0, misterio = 0;
+        int viagens;
         int anoPesquisa, mesPesquisa = 0;
 
         out.println("-----------GeocachingPOO: Estatisticas---------");

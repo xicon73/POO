@@ -11,6 +11,7 @@ public class Motorista extends Cliente {
     private int[] grau = new int[100];    //grau de cumprimento de horário estabelecido com o cliente, dado por um factor entre 0 e 100
     private double kms;
     private int estado;
+    private int carro; //0 - não tem ; 1- tem
 
     /**
      * Construtor vazio, ou seja, inicializa um Motorista a nulo.
@@ -20,6 +21,7 @@ public class Motorista extends Cliente {
         this.grau = null;
         this.kms = 0;
         this.estado = 0;
+        this.carro = 0;
     }
 
     /**
@@ -28,11 +30,12 @@ public class Motorista extends Cliente {
      * @param kms Número de kms já realizados na UMeR
      * @param estado Estado do motorista, 0 - Fora de serviço, 1 - Livre, 2 - Em viagem
      */
-    public Motorista(String email, String password, String nome, String morada, GregorianCalendar d, int [] array, double kms, int estado){
+    public Motorista(String email, String password, String nome, String morada, GregorianCalendar d, int [] array, double kms, int estado, int carro){
         super(email,password,nome,morada,d);
         this.grau = array;
         this.kms = kms;
         this.estado = estado;
+        this.carro = carro;
     }
 
     /**
@@ -44,6 +47,7 @@ public class Motorista extends Cliente {
         this.grau = m.getGrau();
         this.kms = m.getKms();
         this.estado = m.getEstado();
+        this.carro = m.getCarro();
     }
 
     public HashMap<String, Motoristas> motoristasLivres(){
@@ -70,6 +74,8 @@ public class Motorista extends Cliente {
     public double getKms() { return kms; }
 
     public int getEstado() {return estado;}
+
+    public int getCarro() {return carro;}
     /*
      * SETS
      */
@@ -86,6 +92,8 @@ public class Motorista extends Cliente {
     public void setEstado(int estado) {
       this.estado = estado;
     }
+
+    public void setCarro(int carro) {this.carro = carro;}
 
     public Motorista clone(){return new Motorista(this);}
 }
