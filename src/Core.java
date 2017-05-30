@@ -190,12 +190,13 @@ public class Core implements Serializable {
             viagem.setTempoPrevisto(tempo);
             viagens.put(viagem.getId(), viagem);
             int avaliacao;
-            //adiciona a viagem aos utilizadores
-            //adiciona distancia à viatura e motorista
-            //atualiza a posiçao da viatura
             out.print("Avalie a prestação do motorista: ");
             avaliacao=input.next();
             //dá a nota ao motorista
+            //adiciona a viagem aos utilizadores
+            //adiciona distancia à viatura e motorista
+            //atualiza a posiçao da viatura
+
         }
         else {catch ViagemCanceladaException;}
     }
@@ -265,9 +266,8 @@ public class Core implements Serializable {
         for (int i = 0; i < 100; i++)out.println();
         int tipo,qualidade, velocidade, preco;
         String criador;
-        String sua;
+        String aux;
         Boolean f = true;
-        criador = currentUser.getEmail();
 
         out.println("------Registo de viatura------");
         out.println("1 - Carrinha de 9 lugares");
@@ -278,54 +278,68 @@ public class Core implements Serializable {
 
         while (f) {
             out.print("Deseja associar esta nova viatura a si? (Y/N)");
-            sua=input.next();
-            if(sua=='Y') {if(currentUser.getCarro == 1) {throw new JaTemCarroException(); break;}
+            aux=input.next();
+            if(aux=='Y') {if(currentUser.getCarro == 1) {throw new JaTemCarroException(); break;}
             else criador = currentUser.getEmail();}
             else criador = "";
+
+            out.print("Introduza o identificador da viatura: ");
+            aux=input.next();
+            //check if is unica
             out.print("Selecione o tipo de viatura que pretende registar: ");
             tipo = input.nextInt();
             switch (tipo) {
                 case 1:
-                    Carrinha viatura1 = new Carrinha();
+                    Carrinha carrinha = new Carrinha();
+                    carrinha.setId(aux);
+                    carrinha.setCondutor(criador);
                     out.print("Introduza a qualidade da Carrinha: ");
                     qualidade = input.nextInt();
+                    carrinha.setQualidade(qualidade);
                     out.print("Introduza a velocidade da Carrinha: ");
                     velocidade = input.nextInt();
+                    carrinha.setVelocidade(velocidade);
                     out.print("Introduza o preco da Carrinha: ");
                     preco = input.nextInt();
+                    carrinha.setPrecoBase(preco);
                     // Registar a viatura
-                    caches.put(cache1.getCodigo(), cache1);
-                    out.println(cache1.getTipo() + " adicionada com sucesso!\n");
+                    viaturas.put(carrinha.getId(), carrinha);
                     f = false;
                     break;
 
                 case 2:
-                    Carro viatura2 = new Carro();
-
+                    Carro Carro = new Carro();
+                    carro.setId(aux);
+                    carro.setCondutor(criador);
                     out.print("Introduza a qualidade do Carro: ");
                     qualidade = input.nextInt();
+                    carro.setQualidade(qualidade);
                     out.print("Introduza a velocidade do Carro: ");
                     velocidade = input.nextInt();
+                    carro.setVelocidade(velocidade);
                     out.print("Introduza o preco do Carro: ");
                     preco = input.nextInt();
+                    carro.setPrecoBase(preco);
                     // Registar a viatura
-                    caches.put(cache1.getCodigo(), cache1);
-                    out.println(cache1.getTipo() + " adicionada com sucesso!\n");
+                    viaturas.put(carro.getId(), carro);
                     f = false;
                     break;
 
                 case 3:
-                    Mota viatura3 = new Mota();
-
+                    Mota mota = new Mota();
+                    mota.setId(aux);
+                    mota.setCondutor(criador);
                     out.print("Introduza a qualidade da Mota: ");
                     qualidade = input.nextInt();
+                    mota.setQualidade(qualidade);
                     out.print("Introduza a velocidade da Mota: ");
                     velocidade = input.nextInt();
+                    mota.setVelocidade(velocidade);
                     out.print("Introduza o preco da Mota: ");
                     preco = input.nextInt();
+                    mota.setPrecoBase(preco);
                     // Registar a viatura
-                    caches.put(cache1.getCodigo(), cache1);
-                    out.println(cache1.getTipo() + " adicionada com sucesso!\n");
+                    viaturas.put(mota.getId(), mota);
                     f = false;
                     break;
                 case 0:
