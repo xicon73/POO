@@ -15,6 +15,7 @@ public class Cliente
     private String morada;
     private GregorianCalendar data_nascimento;
     private int admin; //1 - admin
+    private int despesa;
 
     /**
      * Construtor vazio, ou seja, inicializa um Cliente a nulo
@@ -26,6 +27,7 @@ public class Cliente
         this.morada = "";
         this.data_nascimento = new GregorianCalendar();
         this.admin = 0;
+        this.despesa = 0;
     }
 
     /**
@@ -36,13 +38,14 @@ public class Cliente
      * @param morada Morada do Cliente
      * @param d Data de nascimento do Cliente
      */
-    public Cliente(String email, String password, String nome, String morada, GregorianCalendar d, int a){
+    public Cliente(String email, String password, String nome, String morada, GregorianCalendar d, int a, int despesa){
         this.email = email;
         this.password = password;
         this.nome = nome;
         this.morada = morada;
         this.data_nascimento = d;
         this.admin = a;
+        this.despesa=despesa;
     }
 
     /**
@@ -56,10 +59,7 @@ public class Cliente
         this.morada = c.getMorada();
         this.data_nascimento = c.getDate();
         this.admin=c.getAdmin();
-    }
-
-    public Viagem fazerViagem(Cliente c, Coordenadas origem, Coordenadas destino){
-      
+        this.despesa=c.getDespesa();
     }
 
     /*
@@ -91,6 +91,8 @@ public class Cliente
     public GregorianCalendar getDate(){ return (GregorianCalendar)data_nascimento.clone(); }
 
     public int getAdmin() {return admin;}
+
+    public int getDespesa() {return despesa;}
 
     /*
      * SETS
@@ -126,6 +128,8 @@ public class Cliente
     public void setDate(GregorianCalendar d){this.data_nascimento=(GregorianCalendar)d.clone();}
 
     public void setAdmin(int admin){this.admin=admin;}
+
+    public void setDespesa(int despesa){this.despesa=despesa;}
 
     public Cliente clone(){return new Cliente(this);}
 }

@@ -12,6 +12,7 @@ public class Motorista extends Cliente {
     private double kms;
     private int estado;
     private int carro; //0 - não tem ; 1- tem
+    //private int ganhos;
 
     /**
      * Construtor vazio, ou seja, inicializa um Motorista a nulo.
@@ -22,6 +23,7 @@ public class Motorista extends Cliente {
         this.kms = 0;
         this.estado = 0;
         this.carro = 0;
+        //this.ganhos = 0;
     }
 
     /**
@@ -36,6 +38,7 @@ public class Motorista extends Cliente {
         this.kms = kms;
         this.estado = estado;
         this.carro = carro;
+//        this.ganhos = ganhos;
     }
 
     /**
@@ -48,6 +51,7 @@ public class Motorista extends Cliente {
         this.kms = m.getKms();
         this.estado = m.getEstado();
         this.carro = m.getCarro();
+        //this.ganhos=m.getGanhos();
     }
 
     public HashMap<String, Motoristas> motoristasLivres(){

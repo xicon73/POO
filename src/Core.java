@@ -194,6 +194,47 @@ public class Core implements Serializable {
     }
 
     public void consultarEstatisticas() {
+        int opcao;
+        out.println("----------UMer: Estatísticas --------");
+        out.println("1 - Melhor Motorista");
+        out.println("2 - Melhor Cliente");
+        out.println("3 - Viatura com mais km");
+        out.println("4 - Top 10 Clientes");
+        out.println("5 - Faturação Viatura");
+        opcao = input.nextInt();
+        switch(opcao) {
+            case 1:
+                String motorista;
+                out.println("O melhor motorista é o " + motorista + "com um total de " + km + "kms!");
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                String viatura;
+                int valor;
+                out.print("Introduza o identificador da viatura: ");
+                viatura = input.next();
+                if(viaturas.containsKey(viatura)) {
+                    for(viatura v : viaturas values) {
+                        if(v.equals(viatura)) {
+                            for(int i = 0; i < viatura.getNCondutores(); i++) {
+                                valor += utilizadores.getGanho()
+                            }
+                        }
+                    }
+                    out.println("A viatura" + viatura + "faturou" + valor + "euros!");
+                } else {throw new ViaturaNaoExisteException(); break;}
+
+                break;
+        }
 
     }
 
@@ -286,7 +327,17 @@ public class Core implements Serializable {
         }
     }
 
-    public void removerViatura() throws SemViaturaException {
+
+    public void associarViatura() throws JaTemViaturaException{
+        String viatura;
+        if(currentUser.getCarro == 1) {throw new JaTemViaturaException(); break;}
+        out.println("------Associação de uma viatura------");
+        out.print("Indique o identificador da viatura a qual pretende associar-se: ");
+        viatura = input.next();
+        // Percorre lista de viaturas if(viaturas.containsKey(viatura))
+        }
+
+    public void desassociarViatura() throws SemViaturaException {
         String opcao;
         if(currentUser.getCarro == 0) {throw new SemViaturaException(); break;}
         out.println("------Remoção de viatura------");
@@ -294,13 +345,11 @@ public class Core implements Serializable {
         opcao = input.next().charAt(0);
         if(opcao == 'Y') {
             currentUser.setCarro(0);
+            //viaturas.getViatura().getCondutores().remove(currentUser.getEmail());
             //retiramos o id ou removemos do map?
         }
-
-
-
-
     }
+
     /**
      * A função reportarCache verifica se um Utilizador encontra uma anomalia na cache, e caso isso aconteça reporta a cache.
      */

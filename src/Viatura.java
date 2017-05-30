@@ -7,10 +7,11 @@ public class Viatura {
   private int velocidade;
   private int preco_base;
   private Coordenadas localizacao;
-  private String condutor //atual;
+  private String condutor; //atual;
   private int kms;
   private int qualidade;
-  //private String[] condutores
+  //private ArrayList<String> condutores;
+  //private int ncondutores;
 
 
   public Viatura(){
