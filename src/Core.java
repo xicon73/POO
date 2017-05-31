@@ -1,4 +1,4 @@
- 
+
 import java.util.*;
 import static java.lang.System.out;
 import Exceptions.*;
@@ -53,13 +53,12 @@ public class Core implements Serializable {
     /**
      * A função registarUser regista um Utilizador.
      */
-    public void registarUser() throws EmailInvalidoException,EmailJaExisteException, NomeInvalidoException,SexoInvalidoException, DataInvalidaException {
+    public void registarUser() throws EmailInvalidoException,EmailJaExisteException, NomeInvalidoException, DataInvalidaException {
         for (int i = 0; i < 100; i++) out.println();
 
-        Utilizador user = new Utilizador();
+        Cliente cliente = new Cliente();
         String email, pw, nome, morada, data;
         String[] dataSplit;
-        char sexo;
         int dia, mes, ano;
 
         out.println("------Registo de utilizador------");
@@ -84,11 +83,57 @@ public class Core implements Serializable {
         out.print("Introduza morada:  ");
         morada = input.next();
 
-        out.print("Introduza sexo: (M/F) ");
-        sexo = input.next().charAt(0);
+        out.print("Introduza data de nascimento: (Dia/Mes/Ano) ");
+        data = input.next();
+        dataSplit = data.split("/");
 
-        if (sexo != 'F' && sexo != 'M')
-            throw new SexoInvalidoException();
+        try{
+            dia = Integer.parseInt(dataSplit[0]);
+            mes = Integer.parseInt(dataSplit[1]);
+            ano = Integer.parseInt(dataSplit[2]);
+        }catch (Exception e) { //nao sei de outra maneira de o fazer
+            throw new DataInvalidaException();
+        }
+
+        if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && String.valueOf(ano).length() == 4) {
+            GregorianCalendar nascimento = new GregorianCalendar(ano, mes, dia);
+            cliente = new Cliente(email, pw, nome, morada, nascimento);
+        }else
+            throw new DataInvalidaException();
+
+        utilizadores.put(cliente.getEmail(), cliente);
+        out.println("Registado com sucesso!\n");
+    }
+
+    public void registarDriver() throws EmailInvalidoException,EmailJaExisteException, NomeInvalidoException, DataInvalidaException {
+        for (int i = 0; i < 100; i++) out.println();
+
+        Motorista motorista = new Motorista();
+        String email, pw, nome, morada, data;
+        String[] dataSplit;
+        int dia, mes, ano;
+
+        out.println("------Registo de motorista------");
+        out.print("Introduza email:  ");
+        email = input.next();
+
+        if (!email.contains("@") || !email.contains("."))
+            throw new EmailInvalidoException(); // um email tem de ter um @ e um .
+
+        if (utilizadores.containsKey(email))
+            throw new EmailJaExisteException();
+
+        out.print("Introduza password:  ");
+        pw = input.next();
+
+        out.print("Introduza nome:  ");
+        nome = input.next();
+
+        if (nome.matches("[0-9]+"))
+            throw new NomeInvalidoException(); // o nome de uma pessoa nao pode ter numeros
+
+        out.print("Introduza morada:  ");
+        morada = input.next();
 
         out.print("Introduza data de nascimento: (Dia/Mes/Ano) ");
         data = input.next();
@@ -104,12 +149,12 @@ public class Core implements Serializable {
 
         if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && String.valueOf(ano).length() == 4) {
             GregorianCalendar nascimento = new GregorianCalendar(ano, mes, dia);
-            user = new Utilizador(email, pw, nome, sexo, morada, nascimento, 0);
+            motorista = new Motorista(email, pw, nome, morada, nascimento,0,0,0,0);
         }else
             throw new DataInvalidaException();
 
-        utilizadores.put(user.getEmail(), user);
-        out.println("Registado com sucesso!\n");
+        utilizadores.put(motorista.getEmail(), motorista);
+        out.println("Motorista registado com sucesso!\n");
     }
 
     // case 2 before login
@@ -120,7 +165,7 @@ public class Core implements Serializable {
         for (int i = 0; i < 100; i++) out.println();
         int valor = 0;
         String email, pw;
-        Utilizador user = new Utilizador();
+        //Utilizador user = new Utilizador();
 
         out.println("------Login------");
         out.print("Introduza email:  ");
@@ -128,7 +173,7 @@ public class Core implements Serializable {
         out.print("Introduza password:  ");
         pw = input.next();
 
-        if (utilizadores.containsKey(email) && utilizadores.get(email).getPw().equals(pw)) {
+        if (utilizadores.containsKey(email) && utilizadores.get(email).getPassword().equals(pw)) {
             for (int i = 0; i < 100; i++) out.println();
             out.println("Login com sucesso!");
             currentUser = utilizadores.get(email);
@@ -210,10 +255,10 @@ public class Core implements Serializable {
             //atualiza a posiçao da viatura
 
         }
-        else {throw new ViagemCanceladaException();}
+        else {throw new ViagemCanceladaException(); break;}
     }
 
-    public void historicoViagens() throws SemViagensException, UtilizadorInexistenteException {
+    public void historicoViagens() throws SemViagensException, UtilizadorNaoExisteException {
         String utilizador;
         String opcao;
         int i = 1;
@@ -224,7 +269,7 @@ public class Core implements Serializable {
             if(opcao=='C') {
                 out.println("Introduza o email do cliente: ");
                 utilizador = input.next();
-                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorInexistenteException(); break;}
+                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException(); break;}
                 for(Viagem v : viagens.values()) {
                     if(v.getCliente().equals(utilizador)) {
                         if(i<11 /*&& !v.instanceOf(Motorista)*/) {
@@ -238,7 +283,7 @@ public class Core implements Serializable {
             else if(opcao=='M'){
                 out.println("Introduza o email do motorista: ");
                 utilizador = input.net();
-                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorInexistenteException(); break;}
+                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException(); break;}
                 for(Viagem v : viagens.values()) {
                     if(v.getMotorista.equals(utilizador)) {
                         if(i<11 && !c.instanceOf(Motorista)) {
@@ -249,7 +294,7 @@ public class Core implements Serializable {
                 }
             }
             utilizador = input.next();
-            if(utilizadores.containsKey(utilizador)) { throw new UtilizadorInexistenteException(); break;}
+            if(utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException(); break;}
             else { throw new SelecaoInvalidaException(); break;}
         }
         else utilizador = currentUser.getEmail();
@@ -437,7 +482,7 @@ public class Core implements Serializable {
     }
 
 
-    public void associarViatura() throws JaTemViaturaException, ViaturaInexistenteException {
+    public void associarViatura() throws JaTemViaturaException, ViaturaNaoEexisteException {
         String viatura;
         if(currentUser.getCarro == 1) {throw new JaTemViaturaException(); break;}
         out.println("------Associação de uma viatura------");
@@ -451,7 +496,7 @@ public class Core implements Serializable {
                 }
             }
         }
-        else {throw new ViaturaInexistenteException(); break;}
+        else {throw new ViaturaNaoExisteException(); break;}
         }
 
     public void desassociarViatura() throws SemViaturaException {
@@ -474,7 +519,7 @@ public class Core implements Serializable {
         }
     }
 
-    public void removerViatura() throws ViaturaInexistenteException {
+    public void removerViatura() throws ViaturaNaoExisteException {
         String viatura;
         String motorista;
         out.println("------Remoção de viatura------");
@@ -494,12 +539,14 @@ public class Core implements Serializable {
                     viaturas.remove(viatura);
                 }
             }
-        } else {throw new ViaturaInexistenteException() ; break; }
+        } else {throw new ViaturaNaoExisteException() ; break; }
     }
 
     /**
      * A função reportarCache verifica se um Utilizador encontra uma anomalia na cache, e caso isso aconteça reporta a cache.
      */
+
+    /*
     public void reportarCache() throws CacheNaoExisteException {
         for (int i = 0; i < 100; i++) out.println();
         String codigo2, motivo;
@@ -520,9 +567,7 @@ public class Core implements Serializable {
     }
 
 
-    /**
-     * A função consultaAtividades permite ao Utilizador consultar a atividade de uma cache.
-     */
+
     public void consultaAtividades() throws UtilizadorNaoExisteException,  AtividadeNullException {
         for (int i = 0; i < 100; i++) out.println();
         String user;
@@ -555,7 +600,7 @@ public class Core implements Serializable {
 
     /**
      * A função estatisticasUser verifica as estatísticas referentes a um Utilizador.
-     */
+
     public void estatisticasUser() throws UtilizadorNaoExisteException,AtividadeNullException,DataInvalidaException{
         for (int i = 0; i < 100; i++) out.println();
         String User;
@@ -645,7 +690,7 @@ public class Core implements Serializable {
                 case 1:
                     out.println("\n-----------UMer: Alterar password---------");
                     out.print("Introduza password nova: ");
-                    currentUser.setPw(input.next());
+                    currentUser.setPassword(input.next());
                     out.println("Sucesso!");
                     out.println("----------------------\n");
                     v = false;
@@ -731,7 +776,7 @@ public class Core implements Serializable {
             out.println(entry.getValue().toString(entry.getValue()));
         }
         out.println("----------------------------------------------------");
-        out.println("Existem " + utilizadores.size() + " utilizadores no sistema GeocachingPOO");
+        out.println("Existem " + utilizadores.size() + " utilizadores no sistema UMer");
         out.println("----------------------------------------------------");
     }
 
@@ -742,7 +787,7 @@ public class Core implements Serializable {
         for (int i = 0; i < 100; i++) out.println();
         char decisao;
 
-        out.println("-----------GeocachingPOO: Apagar conta---------");
+        out.println("-----------UMer: Apagar conta---------");
         if (!isAdmin()) {
             out.print("Tem a certeza que pretende remover a sua conta? (y/n) : ");
             decisao = input.next().charAt(0);
@@ -757,11 +802,22 @@ public class Core implements Serializable {
             }
         } else {
             out.print("Introduza o email do utilizador que pretende remover: ");
-            String userRemover = input.next();
+            String utilizador = input.next();
             if (!utilizadores.containsKey(userRemover))
                 throw new UtilizadorNaoExisteException();
             else {
-                utilizadores.remove(userRemover);
+                for(Motorista m : utilizadores.values()){
+                    if(m.getEmail.equals(utilizador)) {
+                        if(m.getCarro == 1) {
+                            for(Viaturas v : viaturas.values()){
+                                if(v.getCondutor.equals(utilizador)) {
+                                    v.setCondutor("");
+                                }
+                            }
+                        }
+                    }
+                }
+                utilizadores.remove(utilizador);
                 out.println("Conta removida com sucesso!\n");
                 return true;
             }

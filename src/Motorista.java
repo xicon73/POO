@@ -58,9 +58,10 @@ public class Motorista extends Cliente {
       TreeMap<String, Motorista> motoristasLiv = new TreeMap<String, Motorista>();
       for(Motorista m: motoristasLiv.values()){
         if(m.getEstado()==1){
-          motoristasLiv.put(m,m.getEmail());
+          motoristasLiv.put(m.getEmail(),m);
         }
       }
+      return motoristasLiv;
     }
 
     /*
