@@ -1,35 +1,31 @@
 package Exceptions;
 
-
 /**
- * Write a description of class ViaturaNaoExisteException here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Claudia Marques
+ * @author Francisco Costa
+ * @author Mauricio Salgado
  */
-public class ViaturaNaoExisteException
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class ViaturaNaoExisteException extends Exception {
 
     /**
-     * Constructor for objects of class ViaturaNaoExisteException
+     * Construtor vazio, ou seja, apenas invoca o construtor da superclasse.
      */
-    public ViaturaNaoExisteException()
-    {
-        // initialise instance variables
-        x = 0;
+    public ViaturaNaoExisteException(){
+        super();
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Construtor parametrizado, ou seja, recebe uma String como parâmetro para informação, que invoca igualmente o construtor da superclasse que aceita uma String por parâmetro.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public ViaturaNaoExisteException(String message){
+        super(message);
+    }
+
+    /**
+     * A função getMessage imprime o texto de exceção.
+     */
+    public String getMessage() {
+        return "A viatura não existe!\n";
     }
 }

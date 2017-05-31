@@ -1,35 +1,31 @@
 package Exceptions;
 
-
 /**
- * Write a description of class UtilizadorNaoExisteException here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Claudia Marques
+ * @author Francisco Costa
+ * @author Mauricio Salgado
  */
-public class UtilizadorNaoExisteException
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class UtilizadorNaoExisteException extends Exception {
 
     /**
-     * Constructor for objects of class UtilizadorNaoExisteException
+     * Construtor vazio, ou seja, apenas invoca o construtor da superclasse.
      */
-    public UtilizadorNaoExisteException()
-    {
-        // initialise instance variables
-        x = 0;
+    public UtilizadorNaoExisteException(){
+        super();
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Construtor parametrizado, ou seja, recebe uma String como parâmetro para informação, que invoca igualmente o construtor da superclasse que aceita uma String por parâmetro.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public UtilizadorNaoExisteException(String message){
+        super(message);
+    }
+
+    /**
+     * A função getMessage imprime o texto de exceção.
+     */
+    public String getMessage() {
+        return "O utilizador não existe!\n";
     }
 }
