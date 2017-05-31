@@ -54,11 +54,11 @@ public class Motorista extends Cliente {
         //this.ganhos=m.getGanhos();
     }
 
-    public HashMap<String, Motoristas> motoristasLivres(){
-      HashSet<String, Motorista> motoristasLiv = new HashSet<String, Motorista>();
-      for(String email: this.motoristas.keySet()){
-        if(this.motoristas.getEstado().equals(1)){
-          motoristas.put(this.motoristas.get(email).clone());
+    public TreeMap<String, Motorista> motoristasLivres(){
+      TreeMap<String, Motorista> motoristasLiv = new TreeMap<String, Motorista>();
+      for(Motorista m: motoristasLiv.values()){
+        if(m.getEstado()==1){
+          motoristasLiv.put(m,m.getEmail());
         }
       }
     }

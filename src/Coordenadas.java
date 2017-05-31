@@ -25,21 +25,21 @@ public class Coordenadas implements java.io.Serializable
     public void setX(double x){ this.x = x; }
     public void setY(double y){ this.y = y; }
 
-    public String toString(){
+    /*public String toString(){
         StringBuilder sb = new StringBuilder();
         String xxs, yys;
-        sb.append("("+Math.abs(this.x)+"º "+xxs+", "+Math.abs(this.y)+"º "+yys+")");
+        sb.append("("+Math.abs(this.x)+"º "+ xxs +", "+Math.abs(this.y)+"º "+ yys +")");
         return sb.toString();
-    }
+    }*/
 
     public boolean equals(Object o){
         if(this == o) return true;
         if((o==null) || (this.getClass() != o.getClass())) return false;
         Coordenadas a = (Coordenadas) o;
-        return (this.x == a.getC() && this.y == a.getY());
+        return (this.x == a.getX() && this.y == a.getY());
     }
 
-    public double distancia() {
+    public double distancia(Coordenadas p1, Coordenadas p2) {
         return Math.sqrt(
                 (p1.getX() - p2.getX()) *  (p1.getX() - p2.getX()) +
                         (p1.getY() - p2.getY()) *  (p1.getY() - p2.getY())

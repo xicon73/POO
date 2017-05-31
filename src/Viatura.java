@@ -28,7 +28,7 @@ public class Viatura {
       this.velocidade = velocidade;
       this.preco_base = preco_base;
       this.localizacao = localizacao.clone();
-      this.condutor = condutor.clone();
+      this.condutor = condutor;
       this.kms = kms;
       this.qualidade = qualidade;
   }
@@ -43,8 +43,8 @@ public class Viatura {
       this.qualidade = m.getQualidade();
   }
 
-  public TreeMap<String, condutor> getLivres (int capacidade, Coordenadas cliente) {
-      TreeMap<String, condutor> motoristasLivres = new TreeMap<String, condutor>;
+  public TreeMap<String, Motorista> getLivres (int capacidade, Coordenadas cliente) {
+      TreeMap<String, Motorista> motoristasLivres = new TreeMap<String, Motorista>();
       return motoristasLivres;
   }
 
@@ -77,7 +77,7 @@ public class Viatura {
       return localizacao;
   }
 
-  public Motorista getCondutor() {
+  public String getCondutor() {
       return condutor;
   }
 
@@ -93,7 +93,7 @@ public class Viatura {
       this.localizacao = localizacao;
   }
 
-  public void setCondutor(Motorista condutor) {
+  public void setCondutor(String condutor) {
       this.condutor = condutor;
   }
 

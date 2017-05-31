@@ -1,5 +1,4 @@
  
-
 import java.util.*;
 import static java.lang.System.out;
 import Exceptions.*;
@@ -183,7 +182,7 @@ public class Core implements Serializable {
         TreeMap<String, Viatura> viaturasLivres = getLivres(pessoas,origem);
         if(viaturasLivres.size()==0) {
             out.println("Não existem motoristas disponíveis!");
-            catch MotoristasOcupadosException();
+            throw new MotoristasOcupadosException();
         }
         out.println("-----------UMer: Lista de motoristas disponíveis---------");
         for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
@@ -211,7 +210,7 @@ public class Core implements Serializable {
             //atualiza a posiçao da viatura
 
         }
-        else {catch ViagemCanceladaException;}
+        else {throw new ViagemCanceladaException();}
     }
 
     public void historicoViagens() throws SemViagensException, UtilizadorInexistenteException {
@@ -224,11 +223,11 @@ public class Core implements Serializable {
             opcao=input.next().chatAt(0);
             if(opcao=='C') {
                 out.println("Introduza o email do cliente: ");
-                utilizador = input.net();
+                utilizador = input.next();
                 if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorInexistenteException(); break;}
                 for(Viagem v : viagens.values()) {
-                    if(v.getCliente.equals(utilizador)) {
-                        if(i<11 && !c.instanceOf(Motorista)) {
+                    if(v.getCliente().equals(utilizador)) {
+                        if(i<11 /*&& !v.instanceOf(Motorista)*/) {
                             out.println(i + ". O utilizador" + c.getEmail() + "com" + c.getKm() + "kms");
                             i++;
                         }
@@ -251,7 +250,7 @@ public class Core implements Serializable {
             }
             utilizador = input.next();
             if(utilizadores.containsKey(utilizador)) { throw new UtilizadorInexistenteException(); break;}
-            else { throw new SelecaoInvalidaException(); break}
+            else { throw new SelecaoInvalidaException(); break;}
         }
         else utilizador = currentUser.getEmail();
         if(currenteUser.isDriver()) {
@@ -319,10 +318,10 @@ public class Core implements Serializable {
                 out.print("Introduza o identificador da viatura: ");
                 viatura = input.next();
                 if(viaturas.containsKey(viatura)) {
-                    for(viatura v : viaturas values) {
+                    for(viatura v : viaturas.values()) {
                         if(v.equals(viatura)) {
                             for(int i = 0; i < viatura.getNCondutores(); i++) {
-                                valor += utilizadores.getGanho()
+                                valor += utilizadores.getGanho();
                             }
                         }
                     }
@@ -769,7 +768,7 @@ public class Core implements Serializable {
         }
     }
 
-    public boolean isDriver() {return currentUser.instanceof(Motorista)}
+    public boolean isDriver() {return currentUser.instanceOf(Motorista);}
 
     public boolean isAdmin(){
         return currentUser.getAdmin()==1;

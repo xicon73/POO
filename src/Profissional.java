@@ -4,13 +4,13 @@ import static java.lang.System.out;
 
 
 public class Profissional extends Motorista {
-    private String empresa;
+   /* private String empresa;
     private String[] viaturas;
 
     public Profissional(){
         super();
         this.empresa = "";
-        this.viaturas = new String[];
+        this.viaturas = new String[0];
     }
 
     public Profissional(String email, String password, String nome, String morada, GregorianCalendar d, int [] array, double kms, int estado, int carro, String empresa, String[] viaturas) {
@@ -25,14 +25,14 @@ public class Profissional extends Motorista {
         this.viaturas = p.getViaturas();
     }
 
-    public setEmpresa (String empresa) {this.empresa=empresa;}
+    public void setEmpresa (String empresa) {this.empresa=empresa;}
 
-    public setViaturas (String [] viaturas) {this.viaturas = viaturas;}
+    public void setViaturas (String [] viaturas) {this.viaturas = viaturas;}
 
-    public getEmpresa() {return empresa;}
+    public String getEmpresa() {return empresa;}
 
-    public getViaturas(){return viaturas;}
+    public String getViaturas(){return viaturas.clone();}
 
-    public Profissional clone(){return new Profissional(m : this);}
-
+    public Profissional clone(){return new Profissional(this);}
+*/
 }

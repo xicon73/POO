@@ -47,6 +47,16 @@ public class Cliente
         this.admin = a;
         this.despesa=0;
     }
+    
+    public Cliente(String email, String password, String nome, String morada, GregorianCalendar d){
+        this.email = email;
+        this.password = password;
+        this.nome = nome;
+        this.morada = morada;
+        this.data_nascimento = d;
+        this.admin = 0;
+        this.despesa=0;
+    }
 
     /**
      * Construtor de cópia, ou seja, copia os dados de um Cliente já existente.

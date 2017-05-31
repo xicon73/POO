@@ -70,19 +70,19 @@ public class Viagem {
         this.data = (GregorianCalendar)data.clone();
     }
 
-    public Cliente getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
-    public Viatura getViatura() {
+    public String getViatura() {
         return viatura;
     }
 
-    public void setViatura(Viatura viatura) {
+    public void setViatura(String viatura) {
         this.viatura = viatura;
     }
 
@@ -118,15 +118,15 @@ public class Viagem {
       this.preco = preco;
     }
 
-    public float getTempoPrevisto() return tempoPrevisto;
+    public float getTempoPrevisto() {return tempoPrevisto;}
 
-    public void setTempoPrevisto(float tempoPrevisto) this.tempoPrevisto = tempoPrevisto;
+    public void setTempoPrevisto(float tempoPrevisto) {this.tempoPrevisto = tempoPrevisto;}
 
     public float getTempoReal() {return tempoReal;}
 
     public void setTempoReal(float tempoReal) { this.tempoReal = tempoReal;}
 
-    public float getDesvio() {return desvio}
+    public float getDesvio() {return desvio;}
 
-    public void setDesvio(float desvio) {this.desvio = desvio}
+    public void setDesvio(float desvio) {this.desvio = desvio;}
 }
