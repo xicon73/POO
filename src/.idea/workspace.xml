@@ -21,19 +21,48 @@
       <file leaf-file-name="Core.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Core.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+            <state relative-caret-position="182">
+              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#registarUser#0;class#Core#0" expanded="false" />
                 <element signature="method#login#0;class#Core#0" expanded="false" />
+                <element signature="method#fazerViagem#0;class#Core#0" expanded="false" />
+                <element signature="method#historicoViagens#0;class#Core#0" expanded="false" />
+                <element signature="method#consultarEstatisticas#0;class#Core#0" expanded="false" />
+                <element signature="method#alterarEstado#0;class#Core#0" expanded="false" />
+                <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
+                <element signature="method#associarViatura#0;class#Core#0" expanded="false" />
+                <element signature="method#desassociarViatura#0;class#Core#0" expanded="false" />
+                <element signature="method#removerViatura#0;class#Core#0" expanded="false" />
                 <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
                 <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
                 <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
                 <element signature="method#definicoesConta#0;class#Core#0" expanded="false" />
                 <element signature="method#listaUsers#0;class#Core#0" expanded="false" />
-                <element signature="method#removeUser#0;class#Core#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="129" column="45" lean-forward="false" selection-start-line="129" selection-start-column="29" selection-end-line="129" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UMer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UMer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,8 +83,38 @@
         <entry file="file://$PROJECT_DIR$/Viagem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-              <folding />
+              <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1867#1868#0" expanded="false" />
+                <element signature="e#1921#1922#0" expanded="false" />
+                <element signature="e#1959#1960#0" expanded="false" />
+                <element signature="e#2018#2019#0" expanded="false" />
+                <element signature="e#2053#2054#0" expanded="false" />
+                <element signature="e#2083#2084#0" expanded="false" />
+                <element signature="e#2130#2131#0" expanded="false" />
+                <element signature="e#2168#2169#0" expanded="false" />
+                <element signature="e#2203#2204#0" expanded="false" />
+                <element signature="e#2233#2234#0" expanded="false" />
+                <element signature="e#2280#2281#0" expanded="false" />
+                <element signature="e#2318#2319#0" expanded="false" />
+                <element signature="e#2356#2357#0" expanded="false" />
+                <element signature="e#2385#2386#0" expanded="false" />
+                <element signature="e#2434#2435#0" expanded="false" />
+                <element signature="e#2470#2471#0" expanded="false" />
+                <element signature="e#2509#2510#0" expanded="false" />
+                <element signature="e#2539#2540#0" expanded="false" />
+                <element signature="e#2590#2591#0" expanded="false" />
+                <element signature="e#2628#2629#0" expanded="false" />
+                <element signature="e#2663#2664#0" expanded="false" />
+                <element signature="e#2695#2696#0" expanded="false" />
+                <element signature="e#2744#2745#0" expanded="false" />
+                <element signature="e#2786#2787#0" expanded="false" />
+                <element signature="e#2817#2818#0" expanded="false" />
+                <element signature="e#2843#2844#0" expanded="false" />
+                <element signature="e#2883#2884#0" expanded="false" />
+                <element signature="e#2915#2916#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,6 +179,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -135,8 +196,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -544,12 +603,13 @@
       <workItem from="1495993760194" duration="1525000" />
       <workItem from="1496052107729" duration="2873000" />
       <workItem from="1496094187352" duration="10596000" />
-      <workItem from="1496139127034" duration="5958000" />
+      <workItem from="1496139127034" duration="6614000" />
+      <workItem from="1496189632196" duration="2672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22802000" />
+    <option name="totallyTimeSpent" value="26130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -563,8 +623,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -575,8 +635,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -598,6 +658,89 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Core.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#registarUser#0;class#Core#0" expanded="false" />
+            <element signature="method#login#0;class#Core#0" expanded="false" />
+            <element signature="method#fazerViagem#0;class#Core#0" expanded="false" />
+            <element signature="method#historicoViagens#0;class#Core#0" expanded="false" />
+            <element signature="method#consultarEstatisticas#0;class#Core#0" expanded="false" />
+            <element signature="method#alterarEstado#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#associarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#desassociarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#removerViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
+            <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
+            <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
+            <element signature="method#definicoesConta#0;class#Core#0" expanded="false" />
+            <element signature="method#listaUsers#0;class#Core#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Viatura.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Viagem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1867#1868#0" expanded="false" />
+            <element signature="e#1921#1922#0" expanded="false" />
+            <element signature="e#1959#1960#0" expanded="false" />
+            <element signature="e#2018#2019#0" expanded="false" />
+            <element signature="e#2053#2054#0" expanded="false" />
+            <element signature="e#2083#2084#0" expanded="false" />
+            <element signature="e#2130#2131#0" expanded="false" />
+            <element signature="e#2168#2169#0" expanded="false" />
+            <element signature="e#2203#2204#0" expanded="false" />
+            <element signature="e#2233#2234#0" expanded="false" />
+            <element signature="e#2280#2281#0" expanded="false" />
+            <element signature="e#2318#2319#0" expanded="false" />
+            <element signature="e#2356#2357#0" expanded="false" />
+            <element signature="e#2385#2386#0" expanded="false" />
+            <element signature="e#2434#2435#0" expanded="false" />
+            <element signature="e#2470#2471#0" expanded="false" />
+            <element signature="e#2509#2510#0" expanded="false" />
+            <element signature="e#2539#2540#0" expanded="false" />
+            <element signature="e#2590#2591#0" expanded="false" />
+            <element signature="e#2628#2629#0" expanded="false" />
+            <element signature="e#2663#2664#0" expanded="false" />
+            <element signature="e#2695#2696#0" expanded="false" />
+            <element signature="e#2744#2745#0" expanded="false" />
+            <element signature="e#2786#2787#0" expanded="false" />
+            <element signature="e#2817#2818#0" expanded="false" />
+            <element signature="e#2843#2844#0" expanded="false" />
+            <element signature="e#2883#2884#0" expanded="false" />
+            <element signature="e#2915#2916#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1485">
@@ -616,12 +759,19 @@
             <element signature="imports" expanded="true" />
             <element signature="method#registarUser#0;class#Core#0" expanded="false" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
+            <element signature="method#fazerViagem#0;class#Core#0" expanded="false" />
+            <element signature="method#historicoViagens#0;class#Core#0" expanded="false" />
+            <element signature="method#consultarEstatisticas#0;class#Core#0" expanded="false" />
+            <element signature="method#alterarEstado#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#associarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#desassociarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#removerViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
             <element signature="method#definicoesConta#0;class#Core#0" expanded="false" />
             <element signature="method#listaUsers#0;class#Core#0" expanded="false" />
-            <element signature="method#removeUser#0;class#Core#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -678,12 +828,19 @@
             <element signature="imports" expanded="true" />
             <element signature="method#registarUser#0;class#Core#0" expanded="false" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
+            <element signature="method#fazerViagem#0;class#Core#0" expanded="false" />
+            <element signature="method#historicoViagens#0;class#Core#0" expanded="false" />
+            <element signature="method#consultarEstatisticas#0;class#Core#0" expanded="false" />
+            <element signature="method#alterarEstado#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#associarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#desassociarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#removerViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
             <element signature="method#definicoesConta#0;class#Core#0" expanded="false" />
             <element signature="method#listaUsers#0;class#Core#0" expanded="false" />
-            <element signature="method#removeUser#0;class#Core#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -731,12 +888,19 @@
             <element signature="imports" expanded="true" />
             <element signature="method#registarUser#0;class#Core#0" expanded="false" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
+            <element signature="method#fazerViagem#0;class#Core#0" expanded="false" />
+            <element signature="method#historicoViagens#0;class#Core#0" expanded="false" />
+            <element signature="method#consultarEstatisticas#0;class#Core#0" expanded="false" />
+            <element signature="method#alterarEstado#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#associarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#desassociarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#removerViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
             <element signature="method#definicoesConta#0;class#Core#0" expanded="false" />
             <element signature="method#listaUsers#0;class#Core#0" expanded="false" />
-            <element signature="method#removeUser#0;class#Core#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -814,17 +978,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UMer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Motorista.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="129" column="45" lean-forward="false" selection-start-line="129" selection-start-column="29" selection-end-line="129" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UMer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -841,8 +1016,38 @@
     <entry file="file://$PROJECT_DIR$/Viagem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-          <folding />
+          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1867#1868#0" expanded="false" />
+            <element signature="e#1921#1922#0" expanded="false" />
+            <element signature="e#1959#1960#0" expanded="false" />
+            <element signature="e#2018#2019#0" expanded="false" />
+            <element signature="e#2053#2054#0" expanded="false" />
+            <element signature="e#2083#2084#0" expanded="false" />
+            <element signature="e#2130#2131#0" expanded="false" />
+            <element signature="e#2168#2169#0" expanded="false" />
+            <element signature="e#2203#2204#0" expanded="false" />
+            <element signature="e#2233#2234#0" expanded="false" />
+            <element signature="e#2280#2281#0" expanded="false" />
+            <element signature="e#2318#2319#0" expanded="false" />
+            <element signature="e#2356#2357#0" expanded="false" />
+            <element signature="e#2385#2386#0" expanded="false" />
+            <element signature="e#2434#2435#0" expanded="false" />
+            <element signature="e#2470#2471#0" expanded="false" />
+            <element signature="e#2509#2510#0" expanded="false" />
+            <element signature="e#2539#2540#0" expanded="false" />
+            <element signature="e#2590#2591#0" expanded="false" />
+            <element signature="e#2628#2629#0" expanded="false" />
+            <element signature="e#2663#2664#0" expanded="false" />
+            <element signature="e#2695#2696#0" expanded="false" />
+            <element signature="e#2744#2745#0" expanded="false" />
+            <element signature="e#2786#2787#0" expanded="false" />
+            <element signature="e#2817#2818#0" expanded="false" />
+            <element signature="e#2843#2844#0" expanded="false" />
+            <element signature="e#2883#2884#0" expanded="false" />
+            <element signature="e#2915#2916#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -856,30 +1061,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        <state relative-caret-position="182">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#registarUser#0;class#Core#0" expanded="false" />
             <element signature="method#login#0;class#Core#0" expanded="false" />
+            <element signature="method#fazerViagem#0;class#Core#0" expanded="false" />
+            <element signature="method#historicoViagens#0;class#Core#0" expanded="false" />
+            <element signature="method#consultarEstatisticas#0;class#Core#0" expanded="false" />
+            <element signature="method#alterarEstado#0;class#Core#0" expanded="false" />
+            <element signature="method#registarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#associarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#desassociarViatura#0;class#Core#0" expanded="false" />
+            <element signature="method#removerViatura#0;class#Core#0" expanded="false" />
             <element signature="method#reportarCache#0;class#Core#0" expanded="false" />
             <element signature="method#consultaAtividades#0;class#Core#0" expanded="false" />
             <element signature="method#estatisticasUser#0;class#Core#0" expanded="false" />
             <element signature="method#definicoesConta#0;class#Core#0" expanded="false" />
             <element signature="method#listaUsers#0;class#Core#0" expanded="false" />
-            <element signature="method#removeUser#0;class#Core#0" expanded="false" />
           </folding>
         </state>
       </provider>

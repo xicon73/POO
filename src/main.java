@@ -111,7 +111,7 @@ public class Main implements Serializable{
                 out.println("10 - Desassociar-se de uma Viatura");
             }
             if(core.isAdmin()) {
-                out.println("7 - Remover Viaturas");
+                out.println("7 - Remover Viatura");
                 out.println("8 - Carregar estado");
                 out.println("9 - Guardar estado"); }
             out.println("0 - Exit");
