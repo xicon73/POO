@@ -1,10 +1,9 @@
 #BlueJ class context
-comment0.target=main
-comment0.text=\n\ Write\ a\ description\ of\ class\ main\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.target=Main
 comment1.params=
-comment1.target=main()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ main\n
-comment2.params=y
-comment2.target=int\ sampleMethod(int)
-comment2.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
+comment1.target=void\ run()
+comment1.text=\n\ A\ fun\u00E7\u00E3o\ run\ \u00E9\ respons\u00E1vel\ por\ executar\ o\ primeiro\ menu\ (login/registo).\n
+comment2.params=
+comment2.target=void\ afterLogin()
+comment2.text=\n\ A\ fun\u00E7\u00E3o\ afterLogin\ \u00E9\ respons\u00E1vel\ por\ executar\ o\ segundo\ menu,\ ap\u00F3s\ login\ com\ sucesso.\n
 numComments=3

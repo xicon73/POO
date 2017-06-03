@@ -3,18 +3,17 @@ import java.io.*;
 import static java.lang.System.out;
 
 public class Viatura {
+  private String id;
   private int capacidade;
   private int velocidade;
-  private int preco_base;
+  private double preco_base;
   private Coordenadas localizacao;
   private String condutor; //atual;
-  private int kms;
+  private double kms;
   private int qualidade;
-  //private ArrayList<String> condutores;
-  //private int ncondutores;
-
 
   public Viatura(){
+      this.id = "";
       this.capacidade = 0;
       this.velocidade = 0;
       this.preco_base = 0;
@@ -23,7 +22,8 @@ public class Viatura {
       this.kms = 0;
       this.qualidade = 0;
   }
-  public Viatura(int capacidade, int velocidade, int preco_base, Coordenadas localizacao, String condutor, int kms, int qualidade){
+  public Viatura(String id, int capacidade, int velocidade, double preco_base, Coordenadas localizacao, String condutor, double kms, int qualidade){
+      this.id = id;
       this.capacidade = capacidade;
       this.velocidade = velocidade;
       this.preco_base = preco_base;
@@ -34,6 +34,7 @@ public class Viatura {
   }
 
   public Viatura(Viatura m){
+      this.id = m.getId();
       this.capacidade = m.getCapacidade();
       this.velocidade = m.getVelocidade();
       this.preco_base = m.getPreco_base();
@@ -42,11 +43,10 @@ public class Viatura {
       this.kms = m.getKms();
       this.qualidade = m.getQualidade();
   }
-
-  public TreeMap<String, Motorista> getLivres (int capacidade, Coordenadas cliente) {
-      TreeMap<String, Motorista> motoristasLivres = new TreeMap<String, Motorista>();
-      return motoristasLivres;
-  }
+  
+  public String getId(){return id;}
+  
+  public void setId(String id){this.id=id;}
 
   public int getCapacidade() {
         return capacidade;
@@ -64,11 +64,11 @@ public class Viatura {
       this.velocidade = velocidade;
     }
 
-  public int getPreco_base() {
+  public double getPreco_base() {
       return preco_base;
     }
 
-  public void setPreco_base(int preco_base) {
+  public void setPreco_base(double preco_base) {
       this.preco_base = preco_base;
     }
   
@@ -81,7 +81,7 @@ public class Viatura {
       return condutor;
   }
 
-  public int getKms() {
+  public double getKms() {
       return kms;
   }
 
@@ -97,11 +97,11 @@ public class Viatura {
       this.condutor = condutor;
   }
 
-  public void setKms(int kms) {
+  public void setKms(double kms) {
       this.kms = kms;
   }
 
-  public void setQualdiade(int qualidade) {
+  public void setQualidade(int qualidade) {
       this.qualidade = qualidade;
   }
 

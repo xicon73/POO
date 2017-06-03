@@ -8,20 +8,22 @@ import static java.lang.System.out;
  */
 
 public class Motorista extends Cliente {
-    private int[] grau = new int[100];    //grau de cumprimento de horário estabelecido com o cliente, dado por um factor entre 0 e 100
+    private double avaliacao;
+    private int viagens;//grau de cumprimento de horário estabelecido com o cliente, dado por um factor entre 0 e 100
     private double kms;
     private int estado;
     private int carro; //0 - não tem ; 1- tem
-    //private int ganhos;
+    //private double ganhos;
 
     /**
      * Construtor vazio, ou seja, inicializa um Motorista a nulo.
      */
     public Motorista(){
         super();
-        this.grau = null;
+        this.avaliacao = 0;
+        this.viagens=0;
         this.kms = 0;
-        this.estado = 0;
+        this.estado = 1;
         this.carro = 0;
         //this.ganhos = 0;
     }
@@ -32,13 +34,14 @@ public class Motorista extends Cliente {
      * @param kms Número de kms já realizados na UMeR
      * @param estado Estado do motorista, 0 - Fora de serviço, 1 - Livre, 2 - Em viagem
      */
-    public Motorista(String email, String password, String nome, String morada, GregorianCalendar d, int [] array, double kms, int estado, int carro){
-        super(email,password,nome,morada,d);
-        this.grau = array;
+    public Motorista(String email, String password, String nome, String morada, GregorianCalendar d, int tipo, double avaliacao, int nviagens, double kms, int estado, int carro){
+        super(email,password,nome,morada,d,tipo);
+        this.avaliacao = avaliacao;
+        this.viagens = nviagens;
         this.kms = kms;
         this.estado = estado;
         this.carro = carro;
-//        this.ganhos = ganhos;
+        //this.ganhos = ganhos;
     }
 
     /**
@@ -47,7 +50,8 @@ public class Motorista extends Cliente {
      */
     public Motorista(Motorista m){
         super(m);
-        this.grau = m.getGrau();
+        this.avaliacao = m.getAvaliacao();
+        this.viagens = m.getViagens();
         this.kms = m.getKms();
         this.estado = m.getEstado();
         this.carro = m.getCarro();
@@ -71,7 +75,9 @@ public class Motorista extends Cliente {
     /**
      * A função getGrau devolve o grau de cumprimento de horário estabelecido com o Cliente.
      */
-    public int [] getGrau() { return grau.clone(); }
+    public double getAvaliacao() { return avaliacao; }
+    
+    public int getViagens(){return viagens;}
 
     /**
      * A função getKms devolve o número de kms já realizados na UMeR.
@@ -87,7 +93,9 @@ public class Motorista extends Cliente {
     /**
      * A função setGrau modifica o grau de cumprimento de horário estabelecido com o Cliente.
      */
-    public void serGrau (int [] grau) { this.grau = grau.clone(); }
+    public void setAvaliacao (double avaliacao) { this.avaliacao = avaliacao; }
+    
+    public void setViagens (int viagens) {this.viagens = viagens;}
 
     /**
      * A função setKms modifica o número de kms já realizados na UMeR.

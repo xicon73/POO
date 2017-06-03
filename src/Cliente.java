@@ -79,6 +79,7 @@ public class Cliente
      * A função getEmail devolve o email do Cliente.
      */
     public String getEmail(){ return email; }
+    
 
     /**
      * A função getPassword devolve a password do Cliente.
@@ -140,6 +141,19 @@ public class Cliente
     public void setAdmin(int admin){this.admin=admin;}
 
     public void setDespesa(int despesa){this.despesa=despesa;}
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Cliente{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", nome='" + nome + '\'' +
+                ", morada='" + morada + '\'' +
+                ", data_nascimento=" + data_nascimento +
+                ", admin=" + admin +
+                ", despesa=" + despesa +
+                '}';
+    }
 
     public Cliente clone(){return new Cliente(this);}
 }

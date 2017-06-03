@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=EmailInvalidoException
-comment0.text=\n\ Write\ a\ description\ of\ class\ EmailInvalidoException\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\n\ @author\ Claudia\ Marques\n\ @author\ Francisco\ Costa\n\ @author\ Mauricio\ Salgado\n
 comment1.params=
 comment1.target=EmailInvalidoException()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ EmailInvalidoException\n
-comment2.params=y
-comment2.target=int\ sampleMethod(int)
-comment2.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
-numComments=3
+comment1.text=\n\ Construtor\ vazio,\ ou\ seja,\ apenas\ invoca\ o\ construtor\ da\ superclasse.\n
+comment2.params=message
+comment2.target=EmailInvalidoException(java.lang.String)
+comment2.text=\n\ Construtor\ parametrizado,\ ou\ seja,\ recebe\ uma\ String\ como\ par\u00E2metro\ para\ informa\u00E7\u00E3o,\ que\ invoca\ igualmente\ o\ construtor\ da\ superclasse\ que\ aceita\ uma\ String\ por\ par\u00E2metro.\n
+comment3.params=
+comment3.target=java.lang.String\ getMessage()
+comment3.text=\n\ A\ fun\u00E7\u00E3o\ getMessage\ imprime\ o\ texto\ de\ exce\u00E7\u00E3o.\n
+numComments=4

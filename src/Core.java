@@ -14,25 +14,19 @@ import java.io.*;
  */
 
 
-/**
- *
- * TO DO
- * registo
- * login
- * exceptions
- * ver os pontos extra
- *
- */
+
 
 
 public class Core implements Serializable {
     private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>(); //ordenada por ordem descrescente do valor gasto
     private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>(); //ordenada por ordem decrescente do numero de km feitos
-    private TreeMap<String, Viagem> viagens = new TreeMap<String, Viagem>(); //ordenada por orden crescente da data
+    private TreeMap<GregorianCalendar, Viagem> viagens = new TreeMap<GregorianCalendar, Viagem>(); //ordenada por orden crescente da data
+    private TreeMap<String, Motorista> motoristas = new TreeMap<String, Motorista>();
     static Scanner input = new Scanner(System.in).useDelimiter("\\n");
 
-    Cliente admin = new Cliente("admin@umer", "1234", "Administrador", "Portugal", new GregorianCalendar(2000, 1, 1), 1);
+    Cliente admin = new Cliente("admin@umer.pt", "1234", "Administrador", "Portugal", new GregorianCalendar(2000, 1, 1), 2);
     Cliente currentUser = new Cliente();
+    Motorista currentDriver = new Motorista();
 
     /**
      * Construtor vazio.
@@ -48,6 +42,9 @@ public class Core implements Serializable {
     public Cliente getCurrentUser() {
         return currentUser.clone();
     }
+    
+    public Motorista getCurrentDriver(){
+        return currentDriver.clone();}
 
     // -----BEFORE LOGIN--------
     /**
@@ -146,14 +143,14 @@ public class Core implements Serializable {
         }catch (Exception e) { //nao sei de outra maneira de o fazer
             throw new DataInvalidaException();
         }
-
         if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && String.valueOf(ano).length() == 4) {
             GregorianCalendar nascimento = new GregorianCalendar(ano, mes, dia);
-            motorista = new Motorista(email, pw, nome, morada, nascimento,0,0,0,0);
+            motorista = new Motorista(email, pw, nome, morada, nascimento,1,0.f,0,0,0,0);
         }else
             throw new DataInvalidaException();
 
         utilizadores.put(motorista.getEmail(), motorista);
+        motoristas.put(motorista.getEmail(), motorista);
         out.println("Motorista registado com sucesso!\n");
     }
 
@@ -189,91 +186,134 @@ public class Core implements Serializable {
     // ------------------AFTER LOGIN----------------
 
 
-    /**
-     * A função inserirAtividade insere uma atividade.
-     */
-    public void fazerViagem() throws MotoristasOcupadosExcepetion, ViagemCanceladaException {
+    public void fazerViagem() throws MotoristasOcupadosException, ViagemCanceladaException {
         for (int i = 0; i < 100; i++) out.println();
         String cliente = currentUser.getEmail();
-        Coordenadas origem;
-        Coordenadas destino;
-        double distancia;
+        GregorianCalendar data = new GregorianCalendar();
+        String posicao;
+        String [] posicaoSplit;
+        String condutor = "";
+        Coordenadas origem = new Coordenadas();
+        Coordenadas destino = new Coordenadas();
+        double distancia = 0;
         String viatura;
         double km = 0;
         char confirmacao;
-        int pessoas;
+        int pessoas = 1;
         Viagem viagem = new Viagem();
+        double tempo = 0;
+        double velocidade = 0;
+        double custo = 0;
+        double aux = 0;
+        Coordenadas viaturaO = new Coordenadas();
+       
 
 
         out.println("-----------UMer: Fazer Viagem---------");
-        out.print("Introduza a sua posição X: ");
-        origem.setX(input.nextDouble());
-        out.print("Introduza a sua posição Y: ");
-        origem.setY(input.nextDouble());
+
+        out.print("Introduza a sua posição (x,y): ");
+        posicao = input.next();
+        posicaoSplit = posicao.split(",");
+        origem.setX(Integer.parseInt(posicaoSplit[0]));
+        origem.setY(Integer.parseInt(posicaoSplit[1]));
         viagem.setOrigem(origem);
-        out.print("Introduza o seu destino X: ");
-        destino.setX(input.nextDouble());
-        out.print("Introduza o seu destino Y: ");
-        destino.setY(input.nextDouble());
+
+        out.print("Introduza o seu destino (x,y): ");
+        posicao = input.next();
+        posicaoSplit = posicao.split(",");
+        destino.setX(Integer.parseInt(posicaoSplit[0]));
+        destino.setY(Integer.parseInt(posicaoSplit[1]));
         viagem.setDestino(destino);
-        distancia = getDistancia(origem,destino);
+
+
+        distancia = origem.getDistancia(destino);
         km = distancia;
         viagem.setDistancia(distancia);
         out.print("Introduza o número de ocupantes na viagem: ");
         pessoas = input.nextInt();
 
 
-
-        TreeMap<String, Viatura> viaturasLivres = getLivres(pessoas,origem);
+        //Determina lista motoristas livres
+        TreeMap<String, Viatura> viaturasLivres = new TreeMap<String, Viatura>();
+        for(Viatura v : viaturas.values()){
+            for(Motorista m : motoristas.values()){
+                if(v.getCondutor().equals(m.getEmail()) && m.getEstado()==1){
+                    viaturasLivres.put(m.getEmail(),v.clone());
+                }
+            }
+        }
         if(viaturasLivres.size()==0) {
             out.println("Não existem motoristas disponíveis!");
             throw new MotoristasOcupadosException();
         }
         out.println("-----------UMer: Lista de motoristas disponíveis---------");
-        for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
+        /*for (Map.Entry<String, Cliente> entry : utilizadores.entrySet()) {
             if(this.entry.getCapacidade() >= pessoas) out.println(entry.getValue().toString(entry.getValue()));
         }
+        for(Map.Entry<String, Viatura> entry : viaturasLivres.entrySet()) {
+            if(this.entry.getCapacidade() >= pessoas) {out.println("ola");}
+        }*/
         out.print("Selecione a viatura desejada.");
         viatura = input.next();
         viagem.setViatura(viatura);
-        distancia = getDistancia(viatura,origem);
+        for(Viatura v : viaturasLivres.values()){
+            if(v.equals(viatura)) {
+                viaturaO=v.getLocalizacao();
+                velocidade=v.getVelocidade();
+                custo=v.getPreco_base();
+                condutor=v.getCondutor();
+            }
+        }
+        custo = custo * distancia;
+        distancia = viaturaO.getDistancia(origem);
         km += distancia;
+        tempo = distancia*velocidade;
         out.println("A viatura está a" + distancia + "km e demora" + tempo + "minutos a chegar!");
+        tempo=km*velocidade;
         out.println("A sua viagem demorará" + tempo + "minutos e terá um custo de" + custo + "euros! Aceita? (Y/N)");
         confirmacao=input.next().charAt(0);
 
         if(confirmacao=='Y') {
             viagem.setPreco(custo);
             viagem.setTempoPrevisto(tempo);
-            viagens.put(viagem.getId(), viagem);
-            int avaliacao;
+            viagens.put(data, viagem);
+            double avaliacao;
             out.print("Avalie a prestação do motorista: ");
-            avaliacao=input.next();
+            avaliacao=input.nextInt();
+            for(Motorista m : motoristas.values()){
+                if(m.getEmail().equals(condutor)) {
+                    double aT = m.getAvaliacao() * m.getViagens();
+                    int viagens = m.getViagens() + 1;
+                    m.setAvaliacao((aT + avaliacao) / (viagens));
+                    m.setViagens(viagens);
+                }
+            }
             //dá a nota ao motorista
             //adiciona a viagem aos utilizadores
             //adiciona distancia à viatura e motorista
             //atualiza a posiçao da viatura
 
         }
-        else {throw new ViagemCanceladaException(); break;}
+        else {throw new ViagemCanceladaException();}
     }
 
-    public void historicoViagens() throws SemViagensException, UtilizadorNaoExisteException {
+
+  public void historicoViagens() throws SemViagensException,UtilizadorNaoExisteException,SelecaoInvalidaException{
         String utilizador;
-        String opcao;
+        char opcao;
         int i = 1;
         out.println("----------UMer: Histórico de Viagens ----------");
         if(currentUser.getAdmin()==1) {
             out.print("Deseja procurar o histórico de um cliente ou motorista? (C/M)");
-            opcao=input.next().chatAt(0);
+            opcao=input.next().charAt(0);
             if(opcao=='C') {
                 out.println("Introduza o email do cliente: ");
                 utilizador = input.next();
-                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException(); break;}
+                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException();}
                 for(Viagem v : viagens.values()) {
                     if(v.getCliente().equals(utilizador)) {
-                        if(i<11 /*&& !v.instanceOf(Motorista)*/) {
-                            out.println(i + ". O utilizador" + c.getEmail() + "com" + c.getKm() + "kms");
+                        if(i<11){
+                            out.println(i + ". O utilizador" + v.getCliente() + "com");
                             i++;
                         }
                     }
@@ -282,27 +322,25 @@ public class Core implements Serializable {
             }
             else if(opcao=='M'){
                 out.println("Introduza o email do motorista: ");
-                utilizador = input.net();
-                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException(); break;}
+                utilizador = input.next();
+                if(!utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException();}
                 for(Viagem v : viagens.values()) {
-                    if(v.getMotorista.equals(utilizador)) {
-                        if(i<11 && !c.instanceOf(Motorista)) {
-                            out.println(i + ". O utilizador" + c.getEmail() + "com" + c.getKm() + "kms");
+                    if(v.getMotorista().equals(utilizador)) {
+                        if(i<11){
+                            out.println(i + ". O utilizador" + v.getMotorista() + "com");
                             i++;
                         }
                     }
                 }
             }
-            utilizador = input.next();
-            if(utilizadores.containsKey(utilizador)) { throw new UtilizadorNaoExisteException(); break;}
-            else { throw new SelecaoInvalidaException(); break;}
+            else { throw new SelecaoInvalidaException();}
         }
         else utilizador = currentUser.getEmail();
-        if(currenteUser.isDriver()) {
+        if(currentUser.getAdmin()==1) {
             for(Viagem v : viagens.values()) {
-                if(v.getMotorista.equals(utilizador)) {
-                    if(i<11 && !c.instanceOf(Motorista)) {
-                        out.println(i + ". O utilizador" + c.getEmail() + "com" + c.getKm() + "kms");
+                if(v.getMotorista().equals(utilizador)) {
+                    if(i<11) {
+                        out.println(i + ". O utilizador" + v.getMotorista() + "com" + v.getDistancia() + "kms");
                         i++;
                     }
                 }
@@ -310,92 +348,95 @@ public class Core implements Serializable {
         }
         else {
             for(Viagem v : viagens.values()) {
-                if(v.getCliente.equals(utilizador)) {
-                    if(i<11 && !c.instanceOf(Motorista)) {
-                        out.println(i + ". O utilizador" + c.getEmail() + "com" + c.getKm() + "kms");
+                if(v.getCliente().equals(utilizador)) {
+                    if(i<11) {
+                        out.println(i + ". O utilizador" + v.getCliente() + "com" + v.getDistancia() + "kms");
                         i++;
                     }
                 }
             }
         }
     }
-
+/*
     public void consultarEstatisticas() throws ViaturaNaoExisteException, SelecaoInvalidaException{
         int opcao;
+        double km = 0;
+        String cliente;
+        String motorista;
         out.println("----------UMer: Estatísticas --------");
         out.println("1 - Melhor Motorista");
         out.println("2 - Melhor Cliente");
         out.println("3 - Viatura com mais km");
-        out.println("4 - Top 10 Clientes");
+        out.println("4 - Top 10 utilizadores");
         out.println("5 - Faturação Viatura");
         opcao = input.nextInt();
         switch(opcao) {
             case 1:
-                String motorista = getMelhorMotorista();
-                double km = motorista.getKm();
-                out.println("O melhor motorista é o " + motorista + "com um total de " + km + "kms!");
+                double max = 0;
+                for(Cliente c : utilizadores.values()){ 
+                    (if(c instanceof Motorista) {
+                        if(c.getKm()>max) {max=c.getKm();motorista=c.getEmail();}
+                    }
+                }
+                out.println("O melhor motorista é o " + motorista + "com um total de " + max + "kms!");
                 break;
 
             case 2:
-                String cliente = utilizadores.first().getEmail();
-                double gasto = utilizadores.first().getGasto();
-                out.println("O melhor cliente é o " + cliente + "com um total de " + gasto + "euros gasto!");
+                for(Cliente c : utilizadores.values()){
+                    if(c.getGasto()>max) {max=c.getGasto; cliente = c.getEmail();}
+                }
+                out.println("O melhor cliente é o " + cliente + "com um total de " + max + "euros gasto!");
                 break;
 
             case 3:
                 String viatura = viaturas.first().getId();
-                double km = viaturas.first().getKm();
+                km = viaturas.first().getKm();
                 out.println("A viatura com mais km é a vitura com id: " + viatura + "com um total de " + km + "kms!");
                 break;
             case 4:
                 int i = 1;
-                double km;
                 for(Cliente c : utilizadores.values()){
-                    if(i<11 && !c.instanceOf(Motorista)) {
-                        out.println(i + ". O utilizador" + c.getEmail() + "com" + c.getKm() + "kms");
+                    if(i<11) {
+                        out.println(i + ". O utilizador" + c.getEmail() + "com um gasto de " + c.getGasto + "euros");
                         i++;
                     }
                 }
                 break;
             case 5:
-                String viatura;
-                int valor;
+                String viatura5;
+                double valor;
                 out.print("Introduza o identificador da viatura: ");
-                viatura = input.next();
+                viatura5 = input.next();
                 if(viaturas.containsKey(viatura)) {
-                    for(viatura v : viaturas.values()) {
-                        if(v.equals(viatura)) {
-                            for(int i = 0; i < viatura.getNCondutores(); i++) {
-                                valor += utilizadores.getGanho();
-                            }
+                    for(Viagem v : viagens.values()) {
+                        if(v.getViatura().equals(viatura5)) {
+                            valor += v.getPreco();
                         }
                     }
                     out.println("A viatura" + viatura + "faturou" + valor + "euros!");
-                } else {throw new ViaturaNaoExisteException(); break;}
-
+                } else {throw new V iaturaNaoExisteException(); break;}
                 break;
         }
-
     }
-
-    public void alterarEstado() {
+*/
+    public void alterarEstado(){
         int estado;
         out.println("-----------UMer: Alterar Estado---------");
         out.print("Introduza o seu estado (0 - Fora de serviço, 1 - Livre, 2 - Em viagem)");
         estado = input.nextInt();
-        currentUser.setEstado(estado);
+        currentDriver.setEstado(estado);
+        for(Motorista m : motoristas.values()) {if (m.getEmail().equals(currentDriver.getEmail())) {m.setEstado(estado);}}
     }
 
 
-    /**
-     * A função registarCache regista uma cache.
-     */
     public void registarViatura() throws JaTemViaturaException, ViaturaJaExisteException, SelecaoInvalidaException{
         for (int i = 0; i < 100; i++)out.println();
         int tipo,qualidade, velocidade, preco;
         String criador;
-        String aux;
+        String id;
+        char aux;
         Boolean f = true;
+        Viatura viaturaNova = new Viatura();
 
         out.println("------Registo de viatura------");
         out.println("1 - Carrinha de 9 lugares");
@@ -405,70 +446,72 @@ public class Core implements Serializable {
         out.println("-----------------------------");
 
         while (f) {
-            out.print("Deseja associar esta nova viatura a si? (Y/N)");
-            aux=input.next();
-            if(aux=='Y') {if(currentUser.getCarro == 1) {throw new JaTemCarroException(); break;}
-            else criador = currentUser.getEmail();}
-            else criador = "";
-
-            out.print("Introduza o identificador da viatura: ");
-            aux=input.next();
-            if(viaturas.containsKey(viatura)) {throw new ViaturaJaExisteException(); break;}
-            //check if is unica
             out.print("Selecione o tipo de viatura que pretende registar: ");
             tipo = input.nextInt();
+            out.print("Deseja associar esta nova viatura a si? (Y/N)");
+            aux=input.next().charAt(0);
+            if(aux=='Y') {if(currentDriver.getCarro() == 1) {throw new JaTemViaturaException();}
+            else criador = currentDriver.getEmail();}
+            /*else*/criador = "";
+
+            out.print("Introduza o identificador da viatura: ");
+            id=input.next();
+            if(viaturas.containsKey(aux)) {throw new ViaturaJaExisteException();}
+            //check if is unica
+            
+          
             switch (tipo) {
                 case 1:
-                    Carrinha carrinha = new Carrinha();
-                    carrinha.setId(aux);
-                    carrinha.setCondutor(criador);
-                    out.print("Introduza a qualidade da Carrinha: ");
+                    viaturaNova.setId(id);
+                    viaturaNova.setCapacidade(8);
+                    viaturaNova.setCondutor(criador);
+                    out.print("Introduza a qualidade da viaturaNova: ");
                     qualidade = input.nextInt();
-                    carrinha.setQualidade(qualidade);
-                    out.print("Introduza a velocidade da Carrinha: ");
+                    viaturaNova.setQualidade(qualidade);
+                    out.print("Introduza a velocidade da viaturaNova: ");
                     velocidade = input.nextInt();
-                    carrinha.setVelocidade(velocidade);
-                    out.print("Introduza o preco da Carrinha: ");
+                    viaturaNova.setVelocidade(velocidade);
+                    out.print("Introduza o preco da viaturaNova: ");
                     preco = input.nextInt();
-                    carrinha.setPrecoBase(preco);
+                    viaturaNova.setPreco_base(preco);
                     // Registar a viatura
-                    viaturas.put(carrinha.getId(), carrinha);
+                    viaturas.put(id, viaturaNova);
                     f = false;
                     break;
 
                 case 2:
-                    Carro Carro = new Carro();
-                    carro.setId(aux);
-                    carro.setCondutor(criador);
+                    viaturaNova.setId(id);
+                    viaturaNova.setCapacidade(4);
+                    viaturaNova.setCondutor(criador);
                     out.print("Introduza a qualidade do Carro: ");
                     qualidade = input.nextInt();
-                    carro.setQualidade(qualidade);
+                    viaturaNova.setQualidade(qualidade);
                     out.print("Introduza a velocidade do Carro: ");
                     velocidade = input.nextInt();
-                    carro.setVelocidade(velocidade);
+                    viaturaNova.setVelocidade(velocidade);
                     out.print("Introduza o preco do Carro: ");
                     preco = input.nextInt();
-                    carro.setPrecoBase(preco);
+                    viaturaNova.setPreco_base(preco);
                     // Registar a viatura
-                    viaturas.put(carro.getId(), carro);
+                    viaturas.put(id, viaturaNova);
                     f = false;
                     break;
 
                 case 3:
-                    Mota mota = new Mota();
-                    mota.setId(aux);
-                    mota.setCondutor(criador);
+                    viaturaNova.setId(id);
+                    viaturaNova.setCapacidade(1);
+                    viaturaNova.setCondutor(criador);
                     out.print("Introduza a qualidade da Mota: ");
                     qualidade = input.nextInt();
-                    mota.setQualidade(qualidade);
+                    viaturaNova.setQualidade(qualidade);
                     out.print("Introduza a velocidade da Mota: ");
                     velocidade = input.nextInt();
-                    mota.setVelocidade(velocidade);
+                    viaturaNova.setVelocidade(velocidade);
                     out.print("Introduza o preco da Mota: ");
                     preco = input.nextInt();
-                    mota.setPrecoBase(preco);
+                    viaturaNova.setPreco_base(preco);
                     // Registar a viatura
-                    viaturas.put(mota.getId(), mota);
+                    viaturas.put(id, viaturaNova);
                     f = false;
                     break;
                 case 0:
@@ -482,40 +525,37 @@ public class Core implements Serializable {
     }
 
 
-    public void associarViatura() throws JaTemViaturaException, ViaturaNaoEexisteException {
+    public void associarViatura() throws JaTemViaturaException, ViaturaNaoExisteException {
         String viatura;
-        if(currentUser.getCarro == 1) {throw new JaTemViaturaException(); break;}
+        if(currentDriver.getCarro() == 1) {throw new JaTemViaturaException();}
         out.println("------Associação de uma viatura------");
         out.print("Indique o identificador da viatura a qual pretende associar-se: ");
         viatura = input.next();
         if(viaturas.containsKey(viatura)) {
             for(Viatura v : this.viaturas.values()){
                 if(v.getId().equals(viatura)) {
-                    currentUser.setCarro(1);
-                    v.setCondutor(currentUser);
+                    currentDriver.setCarro(1);
+                    v.setCondutor(currentDriver.getEmail());
                 }
             }
         }
-        else {throw new ViaturaNaoExisteException(); break;}
+        else {throw new ViaturaNaoExisteException();}
         }
 
-    public void desassociarViatura() throws SemViaturaException {
-        String opcao;
-        if(currentUser.getCarro == 0) {throw new SemViaturaException(); break;}
+    public void desassociarViatura() throws NaoTemViaturaException {
+        char opcao;
+        if(currentDriver.getCarro() == 0) {throw new NaoTemViaturaException();}
         out.println("------Remoção de viatura------");
         out.println("Tem a certeza de que deseja remover a sua viatura? (Y/N)");
         opcao = input.next().charAt(0);
         if(opcao == 'Y') {
-            currentUser.setCarro(0);
+            currentDriver.setCarro(0);
             for(Viatura v : this.viaturas.values()){
-                if(v.getId().equals(viatura)) {
+                if(v.getCondutor().equals(currentUser.getEmail())) {
                     v.setCondutor("");
                     //Retira o motorista à viatura
                 }
             }
-
-            //viaturas.getViatura().getCondutores().remove(currentUser.getEmail());
-            //retiramos o id ou removemos do map?
         }
     }
 
@@ -530,7 +570,7 @@ public class Core implements Serializable {
                 if(v.getId().equals(viatura)) {
                     motorista=v.getCondutor();
                     if(!(motorista.equals(""))) {
-                        for(Motorista m : this.utilizadores.values()){
+                        for(Motorista m : this.motoristas.values()){
                             if(m.getEmail().equals(motorista)) {
                                 m.setCarro(0);
                             }
@@ -539,7 +579,7 @@ public class Core implements Serializable {
                     viaturas.remove(viatura);
                 }
             }
-        } else {throw new ViaturaNaoExisteException() ; break; }
+        } else {throw new ViaturaNaoExisteException(); }
     }
 
     /**
@@ -739,12 +779,12 @@ public class Core implements Serializable {
                 case 4:
                     if (isAdmin()) {
                         out.println("\n-----------UMer: Alterar privilegios---------");
-                        Utilizador t = new Utilizador();
+                        Cliente c = new Cliente();
                         out.print("Introduza o email do utilizador: ");
-                        t = utilizadores.get(input.next());
-                        if (t != null) {
+                        c = utilizadores.get(input.next());
+                        if (c != null) {
                             out.print("Introduza o novo grau de privilegios do utilizador (0 normal/1 admin): ");
-                            t.setPrivilegios(input.nextInt());
+                            c.setAdmin(input.nextInt());
                             out.println("Sucesso!");
                         } else {
                             v = false;
@@ -766,19 +806,19 @@ public class Core implements Serializable {
     }
 
     /**
-     * A função listaUsers verifica a lista de Utilizadores.
+     * A função listaUsers verifica a lista de utilizadores.
      */
-    public void listaUsers() {
+    /*public void listaUsers() {
         for (int i = 0; i < 100; i++) out.println();
 
         out.println("-----------UMer: Lista de utilizadores---------");
-        for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
+        for (Map.Entry<String, Cliente> entry : utilizadores.entrySet()) {
             out.println(entry.getValue().toString(entry.getValue()));
         }
         out.println("----------------------------------------------------");
         out.println("Existem " + utilizadores.size() + " utilizadores no sistema UMer");
         out.println("----------------------------------------------------");
-    }
+    }*/
 
     /**
      * A função removeUser permite ao Utilizador decidir se quer ou não remover a sua conta.
@@ -803,20 +843,20 @@ public class Core implements Serializable {
         } else {
             out.print("Introduza o email do utilizador que pretende remover: ");
             String utilizador = input.next();
-            if (!utilizadores.containsKey(userRemover))
+            if (!utilizadores.containsKey(utilizador))
                 throw new UtilizadorNaoExisteException();
             else {
-                for(Motorista m : utilizadores.values()){
-                    if(m.getEmail.equals(utilizador)) {
-                        if(m.getCarro == 1) {
-                            for(Viaturas v : viaturas.values()){
-                                if(v.getCondutor.equals(utilizador)) {
+                /*for(Cliente c : utilizadores.values()){
+                    if(c.getEmail().equals(utilizador)) {
+                        if(c.getCarro() == 1) {
+                            for(Viatura v : viaturas.values()){
+                                if(v.getCondutor().equals(utilizador)) {
                                     v.setCondutor("");
                                 }
                             }
                         }
                     }
-                }
+                }*/
                 utilizadores.remove(utilizador);
                 out.println("Conta removida com sucesso!\n");
                 return true;
@@ -824,9 +864,9 @@ public class Core implements Serializable {
         }
     }
 
-    public boolean isDriver() {return currentUser.instanceOf(Motorista);}
+    public boolean isDriver() {return currentUser.getAdmin()==1;}
 
     public boolean isAdmin(){
-        return currentUser.getAdmin()==1;
+        return currentUser.getAdmin()==2;
     }
 }

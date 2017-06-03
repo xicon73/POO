@@ -19,6 +19,6 @@ comment7.target=void\ setY(double)
 comment8.params=o
 comment8.target=boolean\ equals(java.lang.Object)
 comment8.text=public\ String\ toString(){\n\ \ \ \ \ \ \ \ StringBuilder\ sb\ \=\ new\ StringBuilder();\n\ \ \ \ \ \ \ \ String\ xxs,\ yys;\n\ \ \ \ \ \ \ \ sb.append("("+Math.abs(this.x)+"\u00BA\ "+\ xxs\ +",\ "+Math.abs(this.y)+"\u00BA\ "+\ yys\ +")");\n\ \ \ \ \ \ \ \ return\ sb.toString();\n}
-comment9.params=p1\ p2
-comment9.target=double\ distancia(Coordenadas,\ Coordenadas)
+comment9.params=p2
+comment9.target=double\ getDistancia(Coordenadas)
 numComments=11

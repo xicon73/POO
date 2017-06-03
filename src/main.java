@@ -5,9 +5,6 @@ import static java.lang.System.out;
 import Exceptions.*;
 
 
-/* VER AS EXCEPTIONS */
-
-
 public class Main implements Serializable{
     private Core core = new Core();
     private Persistencia state = new Persistencia();
@@ -21,7 +18,7 @@ public class Main implements Serializable{
         boolean flag = true;
 
         while(flag){
-            out.println("-----------GeocachingPOO----------");
+            out.println("-----------UMer----------");
             out.println("1 - Registar utilizador");
             out.println("2 - Registar motorista");
             out.println("3 - Login");
@@ -102,7 +99,7 @@ public class Main implements Serializable{
             out.println("2 - Verificar Histórico de Viagens");
             out.println("3 - Consultar estatisticas");
             out.println("4 - Definições de conta");
-            out.println("5 - Lista utilizadores");
+            out.println("5 - Lista de utilizadores");
             out.println("6 - Remover conta");
             if(core.isDriver()) {
                 out.println("7 - Alterar estado");
@@ -131,7 +128,7 @@ public class Main implements Serializable{
                         break;
 
                     case 3:
-                        core.consultarEstatisticas();
+                        //core.consultarEstatisticas();
                         break;
 
                     case 4:
@@ -139,7 +136,7 @@ public class Main implements Serializable{
                         break;
 
                     case 5:
-                        core.listaUsers();
+                        //core.listaUsers();
                         break;
 
                     case 6:
@@ -199,31 +196,7 @@ public class Main implements Serializable{
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(CacheNaoExisteException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
-            }catch(AtividadeJaDescobertaException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
             }catch(DataInvalidaException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
-            }catch(SolucaoErradaException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
-            }catch(TesouroInvalidoException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
-            }catch(AtividadeNullException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
-            }catch(DificuldadeInvalidaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
@@ -231,43 +204,35 @@ public class Main implements Serializable{
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(AmigoJaAdicionadoException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
             }catch(UtilizadorNaoExisteException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(AdicionarMesmaPessoaException e){
+            }/*catch(MotoristasOcupadosException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(PedidoNaoExisteException e){
+            }*/catch(SemViagensException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(EventoNaoExisteException e){
+            }/*catch(ViagemCanceladaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(JaInscritoEventoException e){
+            }*/catch(ViaturaNaoExisteException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(InscricoesCheiasException e){
+            }catch(ViaturaJaExisteException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(PassouDataLimiteException e){
+            }/*catch(NaoTemViaturaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }catch(CacheJaInseridaException e){
-                out.println(e.getMessage());
-                flag=false;
-                afterLogin();
-            }catch(NaoExistemParticipantesException e){
+            }*/catch(JaTemViaturaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
