@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 import static java.lang.System.out;
 
-public class Viatura {
+public class Viatura implements Serializable{
   private String id;
   private int capacidade;
   private int velocidade;

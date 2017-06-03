@@ -8,7 +8,7 @@ public class Persistencia implements Serializable{
      * A função guardarEstado permite guardar um estado em binario.
      * @param e O Core recebido.
      */
-    public void guardarEstado(Core e) throws IOException{
+    public static void guardarEstado(Core e) throws IOException{
         FileOutputStream fos = new FileOutputStream("UMer.state");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -19,7 +19,7 @@ public class Persistencia implements Serializable{
     /**
      * A função carregarEstado permite carregar um estado.
      */
-    public Core carregarEstado() throws IOException,ClassNotFoundException{
+    public static Core carregarEstado() throws IOException,ClassNotFoundException{
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("UMer.state"));
 
         Core novoState = (Core) ois.readObject();

@@ -7,7 +7,7 @@ import static java.lang.System.out;
  * @author Cláudia Marques
  * @version 0.2
  */
-public class Cliente
+public class Cliente implements Serializable
 {
     private String email;
     private String password;
@@ -15,7 +15,7 @@ public class Cliente
     private String morada;
     private GregorianCalendar data_nascimento;
     private int admin; //1 - admin
-    private int despesa;
+    private double despesa;
 
     /**
      * Construtor vazio, ou seja, inicializa um Cliente a nulo
@@ -103,7 +103,7 @@ public class Cliente
 
     public int getAdmin() {return admin;}
 
-    public int getDespesa() {return despesa;}
+    public double getDespesa() {return despesa;}
 
     /*
      * SETS
@@ -140,7 +140,7 @@ public class Cliente
 
     public void setAdmin(int admin){this.admin=admin;}
 
-    public void setDespesa(int despesa){this.despesa=despesa;}
+    public void setDespesa(double despesa){this.despesa=despesa;}
 
     @java.lang.Override
     public java.lang.String toString() {
@@ -154,6 +154,27 @@ public class Cliente
                 ", despesa=" + despesa +
                 '}';
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+
+        Cliente cliente = (Cliente) object;
+
+        if (admin != cliente.admin) return false;
+        if (despesa != cliente.despesa) return false;
+        if (!email.equals(cliente.email)) return false;
+        if (!password.equals(cliente.password)) return false;
+        if (!nome.equals(cliente.nome)) return false;
+        if (!morada.equals(cliente.morada)) return false;
+        if (!data_nascimento.equals(cliente.data_nascimento)) return false;
+
+        return true;
+    }
+
+
+
 
     public Cliente clone(){return new Cliente(this);}
 }

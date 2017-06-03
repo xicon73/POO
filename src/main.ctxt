@@ -6,4 +6,6 @@ comment1.text=\n\ A\ fun\u00E7\u00E3o\ run\ \u00E9\ respons\u00E1vel\ por\ execu
 comment2.params=
 comment2.target=void\ afterLogin()
 comment2.text=\n\ A\ fun\u00E7\u00E3o\ afterLogin\ \u00E9\ respons\u00E1vel\ por\ executar\ o\ segundo\ menu,\ ap\u00F3s\ login\ com\ sucesso.\n
-numComments=3
+comment3.params=
+comment3.target=void\ main()
+numComments=4

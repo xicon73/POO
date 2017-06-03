@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 import static java.lang.System.out;
 
-public class Viagem {
+public class Viagem implements Serializable{
 
     private GregorianCalendar data;
     /*public string cliente;

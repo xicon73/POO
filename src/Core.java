@@ -18,9 +18,9 @@ import java.io.*;
 
 
 public class Core implements Serializable {
-    private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>(); //ordenada por ordem descrescente do valor gasto
-    private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>(); //ordenada por ordem decrescente do numero de km feitos
-    private TreeMap<GregorianCalendar, Viagem> viagens = new TreeMap<GregorianCalendar, Viagem>(); //ordenada por orden crescente da data
+    private TreeMap<String, Cliente> utilizadores = new TreeMap<String, Cliente>();
+    private TreeMap<String, Viatura> viaturas = new TreeMap<String, Viatura>();
+    private TreeMap<GregorianCalendar, Viagem> viagens = new TreeMap<GregorianCalendar, Viagem>();
     private TreeMap<String, Motorista> motoristas = new TreeMap<String, Motorista>();
     static Scanner input = new Scanner(System.in).useDelimiter("\\n");
 
@@ -234,7 +234,7 @@ public class Core implements Serializable {
 
 
         //Determina lista motoristas livres
-        TreeMap<String, Viatura> viaturasLivres = new TreeMap<String, Viatura>();
+        /*TreeMap<String, Viatura> viaturasLivres = new TreeMap<String, Viatura>();
         for(Viatura v : viaturas.values()){
             for(Motorista m : motoristas.values()){
                 if(v.getCondutor().equals(m.getEmail()) && m.getEstado()==1){
@@ -242,10 +242,10 @@ public class Core implements Serializable {
                 }
             }
         }
-        if(viaturasLivres.size()==0) {
+        if(viaturasLivres.isEmpty()) {
             out.println("Não existem motoristas disponíveis!");
             throw new MotoristasOcupadosException();
-        }
+        }*/
         out.println("-----------UMer: Lista de motoristas disponíveis---------");
         /*for (Map.Entry<String, Cliente> entry : utilizadores.entrySet()) {
             if(this.entry.getCapacidade() >= pessoas) out.println(entry.getValue().toString(entry.getValue()));
@@ -256,7 +256,7 @@ public class Core implements Serializable {
         out.print("Selecione a viatura desejada.");
         viatura = input.next();
         viagem.setViatura(viatura);
-        for(Viatura v : viaturasLivres.values()){
+        for(Viatura v : viaturas.values()){
             if(v.equals(viatura)) {
                 viaturaO=v.getLocalizacao();
                 velocidade=v.getVelocidade();
@@ -267,9 +267,9 @@ public class Core implements Serializable {
         custo = custo * distancia;
         distancia = viaturaO.getDistancia(origem);
         km += distancia;
-        tempo = distancia*velocidade;
+        tempo = distancia/velocidade;
         out.println("A viatura está a" + distancia + "km e demora" + tempo + "minutos a chegar!");
-        tempo=km*velocidade;
+        tempo=km/velocidade;
         out.println("A sua viagem demorará" + tempo + "minutos e terá um custo de" + custo + "euros! Aceita? (Y/N)");
         confirmacao=input.next().charAt(0);
 
@@ -287,6 +287,15 @@ public class Core implements Serializable {
                     m.setAvaliacao((aT + avaliacao) / (viagens));
                     m.setViagens(viagens);
                 }
+            }
+            for(Viatura v : viaturas.values()){
+                if(v.getId().equals(viatura)){
+                v.setLocalizacao(destino);}
+            }
+            for(Cliente c : utilizadores.values()){
+                if(c.getEmail().equals(currentUser.getEmail())) {
+                double money = c.getDespesa() + custo;
+                c.setDespesa(money);}
             }
             //dá a nota ao motorista
             //adiciona a viagem aos utilizadores
@@ -313,7 +322,7 @@ public class Core implements Serializable {
                 for(Viagem v : viagens.values()) {
                     if(v.getCliente().equals(utilizador)) {
                         if(i<11){
-                            out.println(i + ". O utilizador" + v.getCliente() + "com");
+                            out.println(i + ". O utilizador" + v.getCliente() + "fez uma viagem de " + v.getDistancia() + "km.");
                             i++;
                         }
                     }
@@ -327,7 +336,7 @@ public class Core implements Serializable {
                 for(Viagem v : viagens.values()) {
                     if(v.getMotorista().equals(utilizador)) {
                         if(i<11){
-                            out.println(i + ". O utilizador" + v.getMotorista() + "com");
+                            out.println(i + ". O motorista" + v.getMotorista() + " fez uma viagem de " + v.getDistancia() + "km.");
                             i++;
                         }
                     }
@@ -357,14 +366,13 @@ public class Core implements Serializable {
             }
         }
     }
-/*
     public void consultarEstatisticas() throws ViaturaNaoExisteException, SelecaoInvalidaException{
         int opcao;
         double km = 0;
         String cliente;
         String motorista;
         out.println("----------UMer: Estatísticas --------");
-        out.println("1 - Melhor Motorista");
+        out.println("1 - Motorista com mais kms");
         out.println("2 - Melhor Cliente");
         out.println("3 - Viatura com mais km");
         out.println("4 - Top 10 utilizadores");
@@ -372,53 +380,50 @@ public class Core implements Serializable {
         opcao = input.nextInt();
         switch(opcao) {
             case 1:
+            String motorista2 = "";
                 double max = 0;
-                for(Cliente c : utilizadores.values()){ 
-                    (if(c instanceof Motorista) {
-                        if(c.getKm()>max) {max=c.getKm();motorista=c.getEmail();}
-                    }
+                for(Motorista m : motoristas.values()){ 
+                    if(m.getKms()>max) {max=m.getKms();motorista2=m.getEmail();}
                 }
-                out.println("O melhor motorista é o " + motorista + "com um total de " + max + "kms!");
+                out.println("O melhor motorista é o " + motorista2 + "com um total de " + max + "kms!");
                 break;
 
             case 2:
+            String cliente2 = "";
+            max=0;
                 for(Cliente c : utilizadores.values()){
-                    if(c.getGasto()>max) {max=c.getGasto; cliente = c.getEmail();}
+                    if(c.getDespesa()>max) {max=c.getDespesa(); cliente2 = c.getEmail();}
                 }
-                out.println("O melhor cliente é o " + cliente + "com um total de " + max + "euros gasto!");
+                out.println("O melhor cliente é o " + cliente2 + "com um total de " + max + "euros gastos!");
                 break;
 
             case 3:
-                String viatura = viaturas.first().getId();
-                km = viaturas.first().getKm();
-                out.println("A viatura com mais km é a vitura com id: " + viatura + "com um total de " + km + "kms!");
+                String viatura6 = "";
+                km = 0;
+                for(Viatura v : viaturas.values()){
+                    if(v.getKms()>km){km=v.getKms(); viatura6 = v.getId();}
+                }
+                out.println("A viatura com mais km é a viatura com id: " + viatura6 + "com um total de " + km + "kms!");
                 break;
             case 4:
-                int i = 1;
-                for(Cliente c : utilizadores.values()){
-                    if(i<11) {
-                        out.println(i + ". O utilizador" + c.getEmail() + "com um gasto de " + c.getGasto + "euros");
-                        i++;
-                    }
-                }
                 break;
             case 5:
                 String viatura5;
-                double valor;
+                double valor = 0;
                 out.print("Introduza o identificador da viatura: ");
                 viatura5 = input.next();
-                if(viaturas.containsKey(viatura)) {
+                if(viaturas.containsKey(viatura5)) {
                     for(Viagem v : viagens.values()) {
                         if(v.getViatura().equals(viatura5)) {
                             valor += v.getPreco();
                         }
                     }
-                    out.println("A viatura" + viatura + "faturou" + valor + "euros!");
-                } else {throw new V iaturaNaoExisteException(); break;}
+                    out.println("A viatura" + viatura5 + "faturou" + valor + "euros!");
+                } else {throw new ViaturaNaoExisteException();}
                 break;
         }
     }
-*/
+    
     public void alterarEstado(){
         int estado;
         out.println("-----------UMer: Alterar Estado---------");
@@ -429,7 +434,7 @@ public class Core implements Serializable {
     }
 
 
-    public void registarViatura() throws JaTemViaturaException, ViaturaJaExisteException, SelecaoInvalidaException{
+    public void registarViatura() throws JaTemViaturaException, ViaturaJaExisteException, SelecaoInvalidaException {
         for (int i = 0; i < 100; i++)out.println();
         int tipo,qualidade, velocidade, preco;
         String criador;
@@ -582,135 +587,6 @@ public class Core implements Serializable {
         } else {throw new ViaturaNaoExisteException(); }
     }
 
-    /**
-     * A função reportarCache verifica se um Utilizador encontra uma anomalia na cache, e caso isso aconteça reporta a cache.
-     */
-
-    /*
-    public void reportarCache() throws CacheNaoExisteException {
-        for (int i = 0; i < 100; i++) out.println();
-        String codigo2, motivo;
-
-        out.println("-----------GeocachingPOO: Report abuse---------");
-        out.print("Introduza o codigo da cache a reportar: ");
-        codigo2 = input.next();
-
-        if(caches.get(codigo2)==null) throw new CacheNaoExisteException();
-        else{
-            out.print("Introduza o motivo do report: ");
-            motivo = input.next();
-
-            caches.get(codigo2).setReportMotive(motivo);
-            reportedCaches.put(codigo2, caches.get(codigo2));
-            out.println("Reportado com sucesso!");
-        }
-    }
-
-
-
-    public void consultaAtividades() throws UtilizadorNaoExisteException,  AtividadeNullException {
-        for (int i = 0; i < 100; i++) out.println();
-        String user;
-        int i = 0;
-
-        out.println("-----------GeocachingPOO: Consulta de atividades---------");
-        out.print("Email do utilizador a consultar: ");
-        user = input.next();
-
-        if (utilizadores.containsKey(user)) {
-            Utilizador userTemp = utilizadores.get(user);
-            if (userTemp.getAtividades().size() == 0) {
-                throw new AtividadeNullException();
-            } else {
-                for (GregorianCalendar entry : userTemp.getAtividades().descendingKeySet()) {
-                    if (i < 10) {
-                        out.println("Cache nº"+ (userTemp.getAtividades().size() - i));
-                        out.println("\tTipo Cache: " + userTemp.getAtividades().get(entry).getTipo());
-                        out.println("\tCódigo Cache: " + userTemp.getAtividades().get(entry).getCodigo());
-                        out.println("\tDescoberta em: " + entry.get(Calendar.DAY_OF_MONTH) + "/"
-                                + entry.get(Calendar.MONTH) + "/"
-                                + entry.get(Calendar.YEAR) + "\n");
-                        i++;
-                    }
-                }
-            }
-        }else
-            throw new UtilizadorNaoExisteException();
-    }
-
-    /**
-     * A função estatisticasUser verifica as estatísticas referentes a um Utilizador.
-
-    public void estatisticasUser() throws UtilizadorNaoExisteException,AtividadeNullException,DataInvalidaException{
-        for (int i = 0; i < 100; i++) out.println();
-        String User;
-        int viagens;
-        int anoPesquisa, mesPesquisa = 0;
-
-        out.println("-----------GeocachingPOO: Estatisticas---------");
-        out.print("Introduza o email do utilizador que pretender verificar: ");
-        User = input.next();
-
-        if (utilizadores.containsKey(User)) {
-            Utilizador UserTemp = utilizadores.get(User);
-            if (UserTemp.getAtividades().size() == 0) {
-                throw new AtividadeNullException();
-            } else {
-                out.print("Introduza o ano que pretende verificar (0 -> estatisticas globais): ");
-                anoPesquisa = input.nextInt();
-                if (String.valueOf(anoPesquisa).length() != 4 && anoPesquisa!=0) throw new DataInvalidaException();
-
-                if (anoPesquisa != 0) {
-                    out.print("Introduza o mês que pretende verificar (0 -> todos os meses desse ano): ");
-                    mesPesquisa = input.nextInt();
-                    if(mesPesquisa<0 || mesPesquisa>12 ) throw new DataInvalidaException();
-                }
-                if (anoPesquisa == 0) {
-                    for (Map.Entry<GregorianCalendar, Cache> cach : UserTemp.getAtividades().entrySet()) {
-                        if (cach.getValue().getTipo().equals("Cache Normal")) normal++;
-                        if (cach.getValue().getTipo().equals("Micro Cache")) micro++;
-                        if (cach.getValue().getTipo().equals("Cache Evento"))evento++;
-                        if (cach.getValue().getTipo().equals("Cache Misterio")) misterio++;
-                        if (cach.getValue().getTipo().equals("Cache Virtual"))virtual++;
-                        if (cach.getValue().getTipo().equals("Multi Cache"))multi++;
-                    }
-                } else if (String.valueOf(anoPesquisa).length() == 4 && mesPesquisa >= 1 && mesPesquisa <= 12) {
-                    for (Map.Entry<GregorianCalendar, Cache> cach : UserTemp.getAtividades().entrySet()) {
-                        if (cach.getValue().getTipo().equals("Cache Normal") && cach.getKey().get(Calendar.MONTH) == mesPesquisa && cach.getKey().get(Calendar.YEAR) == anoPesquisa) normal++;
-                        if (cach.getValue().getTipo().equals("Micro Cache") && cach.getKey().get(Calendar.MONTH) == mesPesquisa && cach.getKey().get(Calendar.YEAR) == anoPesquisa) micro++;
-                        if (cach.getValue().getTipo().equals("Cache Evento")&& cach.getKey().get(Calendar.MONTH) == mesPesquisa && cach.getKey().get(Calendar.YEAR) == anoPesquisa)evento++;
-                        if (cach.getValue().getTipo().equals("Cache Misterio") && cach.getKey().get(Calendar.MONTH) == mesPesquisa && cach.getKey().get(Calendar.YEAR) == anoPesquisa) misterio++;
-                        if (cach.getValue().getTipo().equals("Cache Virtual") && cach.getKey().get(Calendar.MONTH) == mesPesquisa && cach.getKey().get(Calendar.YEAR) == anoPesquisa) virtual++;
-                        if (cach.getValue().getTipo().equals("Multi Cache") && cach.getKey().get(Calendar.MONTH) == mesPesquisa&& cach.getKey().get(Calendar.YEAR) == anoPesquisa)multi++;
-                    }
-                } else if (String.valueOf(anoPesquisa).length() == 4 && mesPesquisa == 0) {
-                    for (Map.Entry<GregorianCalendar, Cache> cach : UserTemp.getAtividades().entrySet()) {
-                        if (cach.getValue().getTipo().equals("Cache Normal") && cach.getKey().get(Calendar.YEAR) == anoPesquisa)normal++;
-                        if (cach.getValue().getTipo().equals("Micro Cache") && cach.getKey().get(Calendar.YEAR) == anoPesquisa)micro++;
-                        if (cach.getValue().getTipo().equals("Cache Evento") && cach.getKey().get(Calendar.YEAR) == anoPesquisa)evento++;
-                        if (cach.getValue().getTipo().equals("Cache Misterio") && cach.getKey().get(Calendar.YEAR) == anoPesquisa)misterio++;
-                        if (cach.getValue().getTipo().equals("Cache Virtual") && cach.getKey().get(Calendar.YEAR) == anoPesquisa)virtual++;
-                        if (cach.getValue().getTipo().equals("Multi Cache")&& cach.getKey().get(Calendar.YEAR) == anoPesquisa)multi++;
-                    }
-                }
-                out.println("-------------------------");
-                out.println("O utilizador encontrou o seguinte numero de caches nesse dado periodo:");
-                out.println("\tCache Normal: " + normal);
-                out.println("\tMicro Cache: " + micro);
-                out.println("\tCache Evento: " + evento);
-                out.println("\tCache Misterio: " + misterio);
-                out.println("\tCache Virtual: " + virtual);
-                out.println("\tMulti Cache: " + multi);
-                out.println("\nPara um total de " + UserTemp.getPontuacao() + " pontos");
-            }
-        } else {
-            throw new UtilizadorNaoExisteException();
-        }
-    }
-
-    /**
-     * A função definicoesConta permite alterar as definições da conta de um Utilizador.
-     */
     public void definicoesConta() throws PrivilegiosInsuficientesException, SelecaoInvalidaException,DataInvalidaException, UtilizadorNaoExisteException {
         for (int i = 0; i < 100; i++)out.println();
         Boolean v = true;
@@ -808,17 +684,20 @@ public class Core implements Serializable {
     /**
      * A função listaUsers verifica a lista de utilizadores.
      */
-    /*public void listaUsers() {
+    public void listaUsers() {
         for (int i = 0; i < 100; i++) out.println();
 
         out.println("-----------UMer: Lista de utilizadores---------");
-        for (Map.Entry<String, Cliente> entry : utilizadores.entrySet()) {
-            out.println(entry.getValue().toString(entry.getValue()));
+        for (Cliente cliente : utilizadores.values()) {
+            out.println("Cliente : " + cliente.getNome() + " - " + cliente.getEmail());
+        }
+        for(Motorista motorista : motoristas.values()){
+            out.println("Motorista : " +motorista.getNome() + " - " + motorista.getEmail());
         }
         out.println("----------------------------------------------------");
         out.println("Existem " + utilizadores.size() + " utilizadores no sistema UMer");
         out.println("----------------------------------------------------");
-    }*/
+    }
 
     /**
      * A função removeUser permite ao Utilizador decidir se quer ou não remover a sua conta.

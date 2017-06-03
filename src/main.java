@@ -6,15 +6,14 @@ import Exceptions.*;
 
 
 public class Main implements Serializable{
-    private Core core = new Core();
-    private Persistencia state = new Persistencia();
-    int decisao;
-    private Scanner inputMain = new Scanner(System.in).useDelimiter("\\n");
+    private static Core core = new Core();
+    private static int decisao;
+    private static Scanner inputMain = new Scanner(System.in).useDelimiter("\\n");
 
     /**
      * A função run é responsável por executar o primeiro menu (login/registo).
      */
-    public void run(){
+    public static void run(){
         boolean flag = true;
 
         while(flag){
@@ -87,7 +86,7 @@ public class Main implements Serializable{
     /**
      * A função afterLogin é responsável por executar o segundo menu, após login com sucesso.
      */
-    public void afterLogin(){
+    public static void afterLogin(){
         boolean flag = true;
 
         while(flag){
@@ -128,7 +127,7 @@ public class Main implements Serializable{
                         break;
 
                     case 3:
-                        //core.consultarEstatisticas();
+                        core.consultarEstatisticas();
                         break;
 
                     case 4:
@@ -136,7 +135,7 @@ public class Main implements Serializable{
                         break;
 
                     case 5:
-                        //core.listaUsers();
+                        core.listaUsers();
                         break;
 
                     case 6:
@@ -156,7 +155,7 @@ public class Main implements Serializable{
 
                     case 8:
                         if(core.isAdmin()){
-                            core = state.carregarEstado();
+                            core = Persistencia.carregarEstado();
                             out.println("Estado carregado com sucesso, por favor faça login de novo!\n");
                             flag=false;
                         }else if(core.isDriver()){
@@ -168,7 +167,7 @@ public class Main implements Serializable{
 
                     case 9:
                         if(core.isAdmin()){
-                            state.guardarEstado(core);
+                            Persistencia.guardarEstado(core);
                             out.println("Estado guardado com sucesso!\n");
                         }else if(core.isDriver()){
                             core.associarViatura();
@@ -190,8 +189,9 @@ public class Main implements Serializable{
 
                 }
             }catch(InputMismatchException e){
-                out.println("Verifique se introduziu um número!");
+                out.println("Verifique se introduziu alguma coisa!");
                 flag=false;
+                afterLogin();
             }catch(SelecaoInvalidaException e){
                 out.println(e.getMessage());
                 flag=false;
@@ -216,11 +216,11 @@ public class Main implements Serializable{
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }/*catch(ViagemCanceladaException e){
+            }catch(ViagemCanceladaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }*/catch(ViaturaNaoExisteException e){
+            }catch(ViaturaNaoExisteException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
@@ -228,11 +228,11 @@ public class Main implements Serializable{
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }/*catch(NaoTemViaturaException e){
+            }catch(NaoTemViaturaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
-            }*/catch(JaTemViaturaException e){
+            }catch(JaTemViaturaException e){
                 out.println(e.getMessage());
                 flag=false;
                 afterLogin();
@@ -242,5 +242,10 @@ public class Main implements Serializable{
                 afterLogin();
             }
         }
+    }
+    
+    public static void main() {
+        run();
+        out.println("Sair!");
     }
 }
