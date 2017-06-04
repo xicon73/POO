@@ -232,27 +232,16 @@ public class Core implements Serializable {
         out.print("Introduza o número de ocupantes na viagem: ");
         pessoas = input.nextInt();
 
-
-        //Determina lista motoristas livres
-        /*TreeMap<String, Viatura> viaturasLivres = new TreeMap<String, Viatura>();
+        out.println("-----------UMer: Lista de motoristas disponíveis---------");
+        TreeMap<String, Viatura> viaturasLivres = new TreeMap<String, Viatura>();
         for(Viatura v : viaturas.values()){
             for(Motorista m : motoristas.values()){
                 if(v.getCondutor().equals(m.getEmail()) && m.getEstado()==1){
                     viaturasLivres.put(m.getEmail(),v.clone());
+                    out.println("Viatura: " + v.getId() + "Condutor : " + v.getCondutor());
                 }
             }
         }
-        if(viaturasLivres.isEmpty()) {
-            out.println("Não existem motoristas disponíveis!");
-            throw new MotoristasOcupadosException();
-        }*/
-        out.println("-----------UMer: Lista de motoristas disponíveis---------");
-        /*for (Map.Entry<String, Cliente> entry : utilizadores.entrySet()) {
-            if(this.entry.getCapacidade() >= pessoas) out.println(entry.getValue().toString(entry.getValue()));
-        }
-        for(Map.Entry<String, Viatura> entry : viaturasLivres.entrySet()) {
-            if(this.entry.getCapacidade() >= pessoas) {out.println("ola");}
-        }*/
         out.print("Selecione a viatura desejada.");
         viatura = input.next();
         viagem.setViatura(viatura);
@@ -461,7 +450,7 @@ public class Core implements Serializable {
 
             out.print("Introduza o identificador da viatura: ");
             id=input.next();
-            if(viaturas.containsKey(aux)) {throw new ViaturaJaExisteException();}
+            if(viaturas.containsKey(id)) {throw new ViaturaJaExisteException();}
             //check if is unica
             
           
